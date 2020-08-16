@@ -1,0 +1,23 @@
+.header-wrapper {
+  background-image: url(../../images/writing.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 65vh;
+
+  .header-content {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ff8c00;
+    z-index: 1;
+    height: 81%;
+  }
+}
+
+.container {
+  background-color: #fff !important;
+  height: 80vh;
+}

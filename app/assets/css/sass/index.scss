@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 854px) {
+  .file-image {
+    display: none;
+  }
+  .price-add-to-cart {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #edit-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@import "header";
