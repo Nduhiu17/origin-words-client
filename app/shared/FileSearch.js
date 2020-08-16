@@ -1,8 +1,8 @@
-import React from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+import React from 'react'
+import FormControl from '@material-ui/core/FormControl'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import { Paper } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,10 +23,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     color: '#ff8c00',
   },
-}));
+}))
 
 export const FileSearch = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Paper className={classes.paper} elevation={4}>
       <FormControl className={classes.margin} fullWidth>
@@ -38,5 +38,5 @@ export const FileSearch = () => {
         />
       </FormControl>
     </Paper>
-  );
-};
+  )
+}

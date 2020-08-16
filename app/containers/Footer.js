@@ -1,9 +1,9 @@
-import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { Paper } from '@material-ui/core';
+import React from 'react'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { Paper } from '@material-ui/core'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -25,10 +25,10 @@ const useStyles = makeStyles(() =>
       color: '#ff8c00',
     },
   }),
-);
+)
 
 export default function Footer() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
@@ -42,5 +42,5 @@ export default function Footer() {
         </AppBar>
       </Paper>
     </div>
-  );
+  )
 }

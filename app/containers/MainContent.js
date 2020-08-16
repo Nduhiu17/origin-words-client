@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Container, Paper, Grid, Toolbar } from '@material-ui/core';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Container, Paper, Grid, Toolbar } from '@material-ui/core'
 
-import FileList from './FileList';
-import Layout from './Layout';
-import PaginationComponent from '../shared/PaginationComponent';
+import FileList from './FileList'
+import Layout from './Layout'
+import PaginationComponent from '../shared/PaginationComponent'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,10 +25,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     color: '#ff8c00',
   },
-}));
+}))
 
 const MainContent = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Layout>
@@ -52,7 +52,7 @@ const MainContent = () => {
         </Paper>
       </Container>
     </Layout>
-  );
-};
+  )
+}
 
-export default MainContent;
+export default MainContent

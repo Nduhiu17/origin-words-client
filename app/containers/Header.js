@@ -1,6 +1,6 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import { Typography, Grid } from '@material-ui/core'
 
 const styles = theme => ({
   '@global': {
@@ -13,10 +13,10 @@ const styles = theme => ({
       },
     },
   },
-});
+})
 
 export default withStyles(styles)(({ classes }) => (
-  <Typography className="maincontent">
+  <Grid className="maincontent">
     <div className="header-wrapper">
       <div className="header-content">
         <Typography variant="h2" gutterBottom className="title-main">
@@ -27,5 +27,5 @@ export default withStyles(styles)(({ classes }) => (
         </Typography>
       </div>
     </div>
-  </Typography>
-));
+  </Grid>
+))

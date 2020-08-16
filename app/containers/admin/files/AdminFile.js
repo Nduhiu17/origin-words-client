@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   Paper,
   Typography,
@@ -7,42 +7,42 @@ import {
   AccordionSummary,
   AccordionDetails,
   Link,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
-import { CustomDialog } from "../../../shared/CustomModal";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { FileForm } from "./FileForm";
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import Tooltip from '@material-ui/core/Tooltip'
+import Zoom from '@material-ui/core/Zoom'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
+import { CustomDialog } from '../../../shared/CustomModal'
+import { FileForm } from './FileForm'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   Paper: {
     padding: 20,
     marginBottom: 20,
   },
   buttons: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
-}));
+}))
 
 const AdminFile = () => {
-  const classes = useStyles();
-  const [isOpen, setIsOpen] = useState(false);
+  const classes = useStyles()
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleDialogClose = () => {
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   const handleDialogOpen = () => {
-    setIsOpen(true);
-  };
+    setIsOpen(true)
+  }
 
   return (
-    <Typography gutterBottom>
+    <Grid>
       <Paper className={classes.Paper}>
         <Grid container>
           <Grid item md={10} sm={12} xs={12}>
@@ -52,14 +52,13 @@ const AdminFile = () => {
               of the passage and its.Learn about the origins of the passage and
               its.
             </Typography>
-            <Typography md={12}>
-              <div className={""}>
+              <div className="">
                 <Accordion
                   square
-                  style={{ border: "none !important", boxShadow: "none" }}
+                  style={{ border: 'none !important', boxShadow: 'none' }}
                 >
-                  <AccordionSummary expandIcon={""} id="panel1a-header">
-                    <Link className={""} style={{ color: "#617482" }}>
+                  <AccordionSummary expandIcon="" id="panel1a-header">
+                    <Link className="" style={{ color: '#617482' }}>
                       View Details
                     </Link>
                   </AccordionSummary>
@@ -72,7 +71,6 @@ const AdminFile = () => {
                   </AccordionDetails>
                 </Accordion>
               </div>
-            </Typography>
           </Grid>
           <Grid
             item
@@ -108,8 +106,8 @@ const AdminFile = () => {
       >
         <FileForm />
       </CustomDialog>
-    </Typography>
-  );
-};
+    </Grid>
+  )
+}
 
-export default AdminFile;
+export default AdminFile

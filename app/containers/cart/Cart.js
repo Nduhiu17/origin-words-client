@@ -1,11 +1,11 @@
-import React from 'react';
-import { Container, Grid, Typography, Paper, Toolbar } from '@material-ui/core';
+import React from 'react'
+import { Container, Grid, Typography, Paper, Toolbar } from '@material-ui/core'
 
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import CartList from './CartList';
-import paypalImg from '../../assets/images/paypal.png';
-import Layout from '../Layout';
+import { createStyles, makeStyles } from '@material-ui/core/styles'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import CartList from './CartList'
+import paypalImg from '../../assets/images/paypal.png'
+import Layout from '../Layout'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -31,10 +31,10 @@ const useStyles = makeStyles(() =>
       fontWeight: 'bold',
     },
   }),
-);
+)
 
 const Cart = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Layout>
       <Container>
@@ -72,7 +72,7 @@ const Cart = () => {
                 xs={12}
                 item
                 style={{ display: 'flex', justifyContent: 'space-between' }}
-                spacing={2}
+               
               >
                 <Paper className={classes.subtotal} elevation={4}>
                   <Typography variant="h6" className={classes.yellow}>
@@ -103,7 +103,7 @@ const Cart = () => {
                 sm={12}
                 item
                 style={{ display: 'flex', justifyContent: 'space-between' }}
-                spacing={2}
+             
               >
                 <Paper className={classes.subtotal} elevation={4}>
                   <Typography variant="h6" className={classes.yellow}>
@@ -125,7 +125,6 @@ const Cart = () => {
                 sm={12}
                 item
                 style={{ display: 'flex', justifyContent: 'space-between' }}
-                spacing={2}
                 className="cart-cards"
               >
                 <Paper className={classes.subtotal}>
@@ -144,7 +143,7 @@ const Cart = () => {
         </Paper>
       </Container>
     </Layout>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

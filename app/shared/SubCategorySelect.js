@@ -1,11 +1,11 @@
-import React from 'react';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Select from '@material-ui/core/Select';
-import { makeStyles } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+import React from 'react'
+import InputLabel from '@material-ui/core/InputLabel'
+import FormControl from '@material-ui/core/FormControl'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Select from '@material-ui/core/Select'
+import { makeStyles } from '@material-ui/core/styles'
+import { Paper } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,16 +26,16 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     color: '#ff8c00',
   },
-}));
+}))
 
 export const SubCategorySelect = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState('')
 
   const handleSubcategoryChange = event => {
-    setAge(event.target.value);
-  };
+    setAge(event.target.value)
+  }
 
   return (
     <Paper className={classes.paper} elevation={4}>
@@ -62,5 +62,5 @@ export const SubCategorySelect = () => {
         <FormHelperText>Select sub-category</FormHelperText>
       </FormControl>
     </Paper>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Button,
   Dialog,
@@ -6,11 +6,11 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from '@material-ui/core';
-import propTypes from 'prop-types';
-import Fade from '@material-ui/core/Fade';
-import Tooltip from '@material-ui/core/Tooltip';
-import Zoom from '@material-ui/core/Zoom';
+} from '@material-ui/core'
+import propTypes from 'prop-types'
+import Fade from '@material-ui/core/Fade'
+import Tooltip from '@material-ui/core/Tooltip'
+import Zoom from '@material-ui/core/Zoom'
 
 export const CustomDialog = ({
   isOpen,
@@ -54,7 +54,7 @@ export const CustomDialog = ({
       </Tooltip>
     </DialogActions>
   </Dialog>
-);
+)
 
 CustomDialog.propTypes = {
   isOpen: propTypes.bool.isRequired,
@@ -62,4 +62,4 @@ CustomDialog.propTypes = {
   title: propTypes.string.isRequired,
   subtitle: propTypes.string,
   children: propTypes.element.isRequired,
-};
+}

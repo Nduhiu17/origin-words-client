@@ -1,14 +1,12 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { PurchasedItem } from './PurchasedItem'
 
-export const PurchasedItemList = () => {
-    return (
-        <Typography>
-            <PurchasedItem/>
-            <PurchasedItem/>
-            <PurchasedItem/>
-            <PurchasedItem/>
-        </Typography>
-    )
-}
+export const PurchasedItemList = () => (
+  <Grid>
+    <PurchasedItem />
+    <PurchasedItem />
+    <PurchasedItem />
+    <PurchasedItem />
+  </Grid>
+)

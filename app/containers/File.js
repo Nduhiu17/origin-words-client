@@ -1,22 +1,22 @@
-import React from 'react';
-import { Paper, Grid, Typography, Toolbar, Divider } from '@material-ui/core';
-import Link from '@material-ui/core/Link';
+import React from 'react'
+import { Paper, Grid, Typography, Toolbar, Divider } from '@material-ui/core'
+import Link from '@material-ui/core/Link'
 
-import Accordion from '@material-ui/core/Accordion';
-import Button from '@material-ui/core/Button';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import Tooltip from '@material-ui/core/Tooltip';
-import Zoom from '@material-ui/core/Zoom';
-import wordImg from '../assets/images/download.png';
+import Accordion from '@material-ui/core/Accordion'
+import Button from '@material-ui/core/Button'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import Tooltip from '@material-ui/core/Tooltip'
+import Zoom from '@material-ui/core/Zoom'
+import wordImg from '../assets/images/download.png'
 
 const File = () => {
-  const preventDefault = event => event.preventDefault();
+  const preventDefault = event => event.preventDefault()
 
   return (
-    <Typography>
+    <Grid>
       <Paper elevation={4}>
         <Grid container spacing={2}>
           <Grid item md={1}>
@@ -62,7 +62,7 @@ const File = () => {
           </Grid>
           <Grid item md={2} sm={12} className="price-add-to-cart">
             <Typography>
-              <Button variant="fab" large style={{ color: '#ff8c00' }}>
+              <Button variant="contained" style={{ color: '#ff8c00',width:'100%',marginBottom:8 }}>
                 <AttachMoneyIcon fontSize="large" />
                 5.00
               </Button>
@@ -70,7 +70,7 @@ const File = () => {
             <Divider />
             <Typography>
               <Tooltip TransitionComponent={Zoom} title="Add to cart">
-                <Button variant="fab" large style={{ color: '#ff8c00' }}>
+                <Button variant="contained" style={{ color: '#ff8c00',width:'100%' }}>
                   <AddShoppingCartIcon fontSize="large" />
                   Add to Cart
                 </Button>
@@ -80,8 +80,8 @@ const File = () => {
         </Grid>
       </Paper>
       <Toolbar />
-    </Typography>
-  );
-};
+    </Grid>
+  )
+}
 
-export default File;
+export default File

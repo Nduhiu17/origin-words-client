@@ -1,29 +1,29 @@
-import React from "react";
-import AccountLayout from "./AccountLayout";
-import { Grid, Paper, CardHeader, Divider } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import React from 'react'
+import { Grid, Paper, CardHeader, Divider } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import AccountLayout from './AccountLayout'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     minWidth: 275,
   },
   column: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   paper: {
     // padding: 0,
   },
-}));
+}))
 
 const AccountDetails = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <AccountLayout>
       <Grid container spacing={0}>
@@ -40,25 +40,25 @@ const AccountDetails = () => {
             <Paper className={classes.paper} elevation={4}>
               <Card className={classes.root} variant="outlined">
                 <CardContent>
-                  <Typography>Account Details</Typography>
+                  <Grid>Account Details</Grid>
                   <Divider variant="fullWidth" />
-                  <Typography className={classes.column}>
+                  <Grid className={classes.column}>
                     <Typography>Name</Typography>
                     <Typography>Antony Nduhiu</Typography>
-                  </Typography>
-                  <Typography className={classes.column}>
+                  </Grid>
+                  <Grid className={classes.column}>
                     <Typography>Email</Typography>
                     <Typography>nduhiu254@gmail.com</Typography>
-                  </Typography>
-                  <Typography className={classes.column}>
+                  </Grid>
+                  <Grid className={classes.column}>
                     <Typography>Username</Typography>
                     <Typography>nduhiu254</Typography>
-                  </Typography>
+                  </Grid>
                 </CardContent>
                 <CardActions>
                   <Button
                     size="small"
-                    style={{ backgroundColor: "#ff8c00", color: "#fff" }}
+                    style={{ backgroundColor: '#ff8c00', color: '#fff' }}
                   >
                     Change Password
                   </Button>
@@ -72,18 +72,18 @@ const AccountDetails = () => {
                 <CardContent>
                   <Typography>Personal statisics</Typography>
                   <Divider variant="fullWidth" />
-                  <Typography className={classes.column}>
+                  <Grid className={classes.column}>
                     <Typography>Total Purchased Items</Typography>
                     <Typography>30</Typography>
-                  </Typography>
-                  <Typography className={classes.column}>
+                  </Grid>
+                  <Grid className={classes.column}>
                     <Typography>Total saved items</Typography>
                     <Typography>15</Typography>
-                  </Typography>
-                  <Typography className={classes.column}>
+                  </Grid>
+                  <Grid className={classes.column}>
                     <Typography>Failed Transactions</Typography>
                     <Typography>5</Typography>
-                  </Typography>
+                  </Grid>
                 </CardContent>
               </Card>
             </Paper>
@@ -91,7 +91,7 @@ const AccountDetails = () => {
         </Grid>
       </Grid>
     </AccountLayout>
-  );
-};
+  )
+}
 
-export default AccountDetails;
+export default AccountDetails

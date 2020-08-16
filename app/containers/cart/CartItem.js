@@ -1,12 +1,12 @@
-import React from 'react';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Paper, Grid, Button } from '@material-ui/core';
-import Tooltip from '@material-ui/core/Tooltip';
-import Zoom from '@material-ui/core/Zoom';
-import wordImg from '../../assets/images/download.png';
+import React from 'react'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
+import { Paper, Grid, Button } from '@material-ui/core'
+import Tooltip from '@material-ui/core/Tooltip'
+import Zoom from '@material-ui/core/Zoom'
+import wordImg from '../../assets/images/download.png'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -22,9 +22,9 @@ const useStyles = makeStyles(() =>
       color: 'gray',
     },
   }),
-);
+)
 export default function CartItem() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Paper className={classes.item} elevation={8}>
       <Grid container justify="space-between">
@@ -40,7 +40,7 @@ export default function CartItem() {
                 />
               </Paper>
             </Grid>
-            <Grid md={10}>
+            <Grid>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
               lobortis gravida tempus. Etiam et aliquam magna.
             </Grid>
@@ -67,7 +67,7 @@ export default function CartItem() {
             </Paper>
           </Tooltip>
         </Grid>
-        <Grid md={2} xs={12} sm={12} style={{ marginTop: 8 }}>
+        <Grid style={{ marginTop: 8 }} item md={2} xs={12} sm={12}>
           <Tooltip TransitionComponent={Zoom} title="Remove item">
             <Paper style={{ padding: 10 }} elevation={8}>
               <RemoveShoppingCartIcon color="secondary" />
@@ -77,5 +77,5 @@ export default function CartItem() {
         </Grid>
       </Grid>
     </Paper>
-  );
+  )
 }

@@ -1,14 +1,12 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
-import { SavedItem } from './SavedItem';
+import { Grid } from '@material-ui/core'
+import { SavedItem } from './SavedItem'
 
-export const SavedList = () => {
-    return (
-        <Typography>
-            <SavedItem/>
-            <SavedItem/>
-            <SavedItem/>
-            <SavedItem/>
-        </Typography>
-    )
-}
+export const SavedList = () => (
+  <Grid>
+    <SavedItem />
+    <SavedItem />
+    <SavedItem />
+    <SavedItem />
+  </Grid>
+)

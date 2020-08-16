@@ -1,16 +1,16 @@
-import React from 'react';
-import { Typography } from '@material-ui/core';
-import File from './File';
+import React from 'react'
+import { Grid } from '@material-ui/core'
+import File from './File'
 
 const FileList = () => (
-  <Typography>
+  <Grid>
     <File />
     <File />
     <File />
     <File />
     <File />
     <File />
-  </Typography>
-);
+  </Grid>
+)
 
-export default FileList;
+export default FileList

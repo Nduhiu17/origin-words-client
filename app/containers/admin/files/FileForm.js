@@ -1,15 +1,15 @@
-import React from 'react';
-import { Paper, Grid, TextField, Toolbar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { Paper, Grid, TextField, Toolbar } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import SaveIcon from '@material-ui/icons/Save';
-import Button from '@material-ui/core/Button';
-import { SubCategorySelect } from '../../../shared/SubCategorySelect';
-import { CategorySelect } from '../../../shared/CategorySelect';
+import InputLabel from '@material-ui/core/InputLabel'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import FormControl from '@material-ui/core/FormControl'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import SaveIcon from '@material-ui/icons/Save'
+import Button from '@material-ui/core/Button'
+import { SubCategorySelect } from '../../../shared/SubCategorySelect'
+import { CategorySelect } from '../../../shared/CategorySelect'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,25 +34,26 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
-}));
+}))
 
 export const FileForm = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const CHARACTER_LIMIT = 180;
+  const CHARACTER_LIMIT = 180
   const [values, setValues] = React.useState({
     title: 'title',
-  });
+  })
 
   const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
-  };
+    setValues({ ...values, [name]: event.target.value })
+  }
 
   return (
+    <Grid>
     <Paper elevation={8} className={classes.wrapper}>
       <form className={classes.root} noValidate autoComplete="off" />
       <Grid container>
-        <Grid item md={12} sm={12} xs={12} fullWidth>
+        <Grid item md={12} sm={12} xs={12}>
           <Paper elevation={4}>
             <FormControl
               fullWidth
@@ -62,7 +63,7 @@ export const FileForm = () => {
               <TextField
                 label="Title"
                 inputProps={{
-                  maxlength: CHARACTER_LIMIT,
+                  maxLength: CHARACTER_LIMIT,
                 }}
                 value={values.title}
                 helperText={`${values.title.length}/${CHARACTER_LIMIT}`}
@@ -74,14 +75,14 @@ export const FileForm = () => {
           </Paper>
         </Grid>
         <Toolbar />
-        <Grid item md={12} sm={12} xs={12} fullWidth>
+        <Grid item md={12} sm={12} xs={12}>
           <Paper elevation={4} className={classes.upload}>
             <TextField name="upload file" type="file" />
           </Paper>
         </Grid>
         <Toolbar />
         <Toolbar />
-        <Grid item md={12} sm={12} xs={12} fullWidth>
+        <Grid item md={12} sm={12} xs={12}>
           <Paper elevation={4}>
             <FormControl
               fullWidth
@@ -94,7 +95,6 @@ export const FileForm = () => {
               <OutlinedInput
                 id="outlined-adornment-amount"
                 value=""
-                onChange=""
                 startAdornment={
                   <InputAdornment position="start">$</InputAdornment>
                 }
@@ -104,7 +104,7 @@ export const FileForm = () => {
           </Paper>
         </Grid>
         <Toolbar />
-        <Grid item md={12} sm={12} xs={12} fullWidth>
+        <Grid item md={12} sm={12} xs={12}>
           <Paper elevation={4}>
             <FormControl
               fullWidth
@@ -118,7 +118,6 @@ export const FileForm = () => {
                 variant="outlined"
                 className={classes.TextField}
                 rows={20}
-                fullWidth
                 multiline
                 rowsMax={8}
               />
@@ -141,7 +140,7 @@ export const FileForm = () => {
         </Grid>
 
         <Toolbar />
-        <Grid md={12} sm={12} xs={12}>
+        <Grid>
           <Grid item md={6} sm={12} xs={12}>
             <Button
               variant="contained"
@@ -158,5 +157,6 @@ export const FileForm = () => {
 
       <form />
     </Paper>
-  );
-};
+    </Grid>
+  )
+}

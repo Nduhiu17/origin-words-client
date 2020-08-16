@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Grid, Button, Paper, Typography } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import AdminFile from './AdminFile';
-import AdminLayout from '../AdminLayout';
-import PaginationComponent from '../../../shared/PaginationComponent';
+import React, { useState } from 'react'
+import { Grid, Button, Paper, Typography } from '@material-ui/core'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import AdminFile from './AdminFile'
+import AdminLayout from '../AdminLayout'
+import PaginationComponent from '../../../shared/PaginationComponent'
 
-import { CustomDialog } from '../../../shared/CustomModal';
-import { FileForm } from './FileForm';
+import { CustomDialog } from '../../../shared/CustomModal'
+import { FileForm } from './FileForm'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -16,19 +16,19 @@ const useStyles = makeStyles(() =>
       marginBottom: 20,
     },
   }),
-);
+)
 
 const AdminFileList = () => {
-  const classes = useStyles();
-  const [isOpen, setIsOpen] = useState(false);
+  const classes = useStyles()
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleDialogClose = () => {
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   const handleDialogOpen = () => {
-    setIsOpen(true);
-  };
+    setIsOpen(true)
+  }
   return (
     <AdminLayout>
       <Grid container spacing={1}>
@@ -38,8 +38,6 @@ const AdminFileList = () => {
       </Grid>
       <Grid
         container
-        xs={12}
-        md={12}
         justify="flex-end"
         className={classes.create}
       >
@@ -71,7 +69,7 @@ const AdminFileList = () => {
         <FileForm />
       </CustomDialog>
     </AdminLayout>
-  );
-};
+  )
+}
 
-export default AdminFileList;
+export default AdminFileList

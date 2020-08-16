@@ -1,5 +1,5 @@
-import React from 'react';
-import { Typography, Toolbar } from '@material-ui/core';
+import React from 'react'
+import { Typography, Toolbar } from '@material-ui/core'
 
 export const NotFound = () => (
   <Typography>
@@ -8,4 +8,4 @@ export const NotFound = () => (
       Not found
     </Typography>
   </Typography>
-);
+)

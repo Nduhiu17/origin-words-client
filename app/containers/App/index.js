@@ -7,29 +7,29 @@
  *
  */
 
-import React, { Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import '../../assets/css/sass/index.css';
+import React, { Suspense } from 'react'
+import { Switch, Route } from 'react-router-dom'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import '../../assets/css/sass/index.css'
 
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import NotFoundPage from 'containers/NotFoundPage/Loadable'
 
-import GlobalStyle from '../../global-styles';
+import GlobalStyle from '../../global-styles'
 
-const mainContent = React.lazy(() => import('../MainContent'));
-const Login = React.lazy(() => import('../auth/login/Login'));
-const Register = React.lazy(() => import('../auth/register/Register'));
-const Cart = React.lazy(() => import('../cart/Cart'));
+const mainContent = React.lazy(() => import('../MainContent'))
+const Login = React.lazy(() => import('../auth/login/Login'))
+const Register = React.lazy(() => import('../auth/register/Register'))
+const Cart = React.lazy(() => import('../cart/Cart'))
 const AdminDashboard = React.lazy(() =>
   import('../admin/dashboard/AdminDashboard'),
-);
-const AdminFileList = React.lazy(() => import('../admin/files/AdminFileList'));
+)
+const AdminFileList = React.lazy(() => import('../admin/files/AdminFileList'))
 const CategoryAndSubCategoryContainer = React.lazy(() =>
   import('../admin/categories/CategoryAndSubCategoryContainer'),
-);
-const AccountDetails = React.lazy(() => import('../myaccount/AccountDetails'));
-const Purchased = React.lazy(() => import('../myaccount/Purchased'));
-const Saved = React.lazy(() => import('../myaccount/Saved'));
+)
+const AccountDetails = React.lazy(() => import('../myaccount/AccountDetails'))
+const Purchased = React.lazy(() => import('../myaccount/Purchased'))
+const Saved = React.lazy(() => import('../myaccount/Saved'))
 
 export default function App() {
   return (
@@ -55,5 +55,5 @@ export default function App() {
       </Suspense>
       <GlobalStyle />
     </div>
-  );
+  )
 }
