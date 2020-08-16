@@ -17,7 +17,7 @@ const File = () => {
 
   return (
     <Grid>
-      <Paper elevation={4}>
+      <Paper elevation={2}>
         <Grid container spacing={2}>
           <Grid item md={1}>
             <img
@@ -62,7 +62,7 @@ const File = () => {
           </Grid>
           <Grid item md={2} sm={12} className="price-add-to-cart">
             <Typography>
-              <Button variant="contained" style={{ color: '#ff8c00',width:'100%',marginBottom:8 }}>
+              <Button variant="contained" style={{ color: '#ff8c00',width:'100%',marginBottom:8 ,backgroundColor:'#fff'}} disableElevation>
                 <AttachMoneyIcon fontSize="large" />
                 5.00
               </Button>
@@ -70,7 +70,7 @@ const File = () => {
             <Divider />
             <Typography>
               <Tooltip TransitionComponent={Zoom} title="Add to cart">
-                <Button variant="contained" style={{ color: '#ff8c00',width:'100%' }}>
+                <Button variant="contained" style={{ color: '#ff8c00',width:'100%',backgroundColor:'#fff' }}>
                   <AddShoppingCartIcon fontSize="large" />
                   Add to Cart
                 </Button>
