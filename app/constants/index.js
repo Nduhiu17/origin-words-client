@@ -1,0 +1,7 @@
+const FILES = {
+  LOAD: 'FILES_LOAD',
+  LOAD_SUCCESS: 'FILES_LOAD_SUCCESS',
+  LOAD_FAIL: 'FILES_LOAD_FAIL',
+}
+
+export { FILES }

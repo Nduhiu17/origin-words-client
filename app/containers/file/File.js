@@ -10,9 +10,9 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
-import wordImg from '../assets/images/download.png'
+import wordImg from '../../assets/images/download.png'
 
-const File = () => {
+const File = ({file}) => {
   const preventDefault = event => event.preventDefault()
 
   return (
@@ -36,9 +36,7 @@ const File = () => {
                 color: '#2F4F4F',
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              lobortis gravida tempus. Etiam et aliquam magna. Nulla a sem sit
-              amet justo maximus ullamcorper a in nulla.
+             {file.name}
             </Typography>
             <div className="">
               <Accordion
@@ -52,9 +50,7 @@ const File = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    {file.description}
                   </Typography>
                 </AccordionDetails>
               </Accordion>
