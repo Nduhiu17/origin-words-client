@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Paper, Grid, Toolbar } from '@material-ui/core'
 
-import FileList from './FileList'
+import FileList from './file/FileList'
 import Layout from './Layout'
 import PaginationComponent from '../shared/PaginationComponent'
 
