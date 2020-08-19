@@ -12,11 +12,14 @@ import { Switch, Route } from 'react-router-dom'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import '../../assets/css/sass/index.css'
 import { connect } from 'react-redux'
-
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
+// import Snackbar from '../../shared/Snackbar'
+
 import { AppLoader } from '../../shared/AppLoader'
 
 import GlobalStyle from '../../global-styles'
+import { ConnectedRouter } from 'connected-react-router'
+import CustomizedSnackbars from '../../shared/Snackbar'
 
 const mainContent = React.lazy(() => import('../MainContent'))
 const Login = React.lazy(() => import('../auth/login/Login'))
@@ -54,6 +57,7 @@ const App = ({ error, isLoading }) => (
         <Route component={NotFoundPage} />
       </Switch>
       <AppLoader open={isLoading} />
+      <CustomizedSnackbars />
     </Suspense>
     <GlobalStyle />
   </div>

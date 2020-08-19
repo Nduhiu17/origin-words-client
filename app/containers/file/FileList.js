@@ -11,12 +11,10 @@ class FileList extends Component {
   }
 
   render() {
-    const { files, error, isLoading } = this.props
+    const { files } = this.props
     return (
       <Grid>
-        {files && files.map((file,index) => (
-        <File file={file} key={index}/>
-        ))}
+        {files && files.map(file => <File file={file} key={file.id} />)}
       </Grid>
     )
   }

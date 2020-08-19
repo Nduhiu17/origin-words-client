@@ -1,4 +1,4 @@
-const URL = `http://localhost:8089/api/v1/files/get-files`
+const URL = `http://localhost:8089/api/v1/files/get-files2`
 
 const fetchFiles = async () => {
   const response = await fetch(`${URL}`)
