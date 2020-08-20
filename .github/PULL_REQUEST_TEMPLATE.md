@@ -1,23 +1,23 @@
-## React Boilerplate
+### What does this PR do?
+Have the end point to get a specific political party working
 
-Thank you for contributing! Please take a moment to review our [**contributing guidelines**](https://github.com/react-boilerplate/react-boilerplate/blob/master/CONTRIBUTING.md)
-to make the process easy and effective for everyone involved.
+### Description of Task to be completed?
+User should get a specific political party
 
-**Please open an issue** before embarking on any significant pull request, especially those that
-add a new library or change existing tests, otherwise you risk spending a lot of time working
-on something that might not end up being merged into the project.
+### How should this be manually tested?
+* Clone the repo by git clone by : git clone https://github.com/Nduhiu17/politico-server.git
+* Navigate into the project by: cd political-server
+* Install a virtual environment by: python3.6 -m venv virtual
+* Install dependancies by: pip install -r requirements.txt
+* Set server's secret key by:
+export SECRET_KEY='put-your-secret-key-here'
+* Export your database url by:
+export DATABASE_URL="postgres://yourusername:yourpassword@localhost:5432/your-test-db-name"
+* Run the server by: python manage.py server
+* Hit the following endpoint with postman: http://127.0.0.1:5000/api/v2/auth/signup['POST']
 
-Before opening a pull request, please ensure:
+### What are the relevant pivotal tracker stories?
+https://www.pivotaltracker.com/story/show/163917625
 
-- [ ] You have followed our [**contributing guidelines**](https://github.com/react-boilerplate/react-boilerplate/blob/master/CONTRIBUTING.md)
-- [ ] Double-check your branch is based on `dev` and targets `dev` 
-- [ ] Pull request has tests (we are going for 100% coverage!)
-- [ ] Code is well-commented, linted and follows project conventions
-- [ ] Documentation is updated (if necessary)
-- [ ] Internal code generators and templates are updated (if necessary)
-- [ ] Description explains the issue/use-case resolved and auto-closes related issues
+### Screenshot
 
-Be kind to code reviewers, please try to keep pull requests as small and focused as possible :)
-
-**IMPORTANT**: By submitting a patch, you agree to allow the project
-owners to license your work under the terms of the [MIT License](https://github.com/react-boilerplate/react-boilerplate/blob/master/LICENSE.md).
