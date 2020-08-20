@@ -10,9 +10,10 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
+import PropTypes from 'prop-types'
 import wordImg from '../../assets/images/download.png'
 
-const File = ({file}) => {
+const File = ({ file }) => {
   const preventDefault = event => event.preventDefault()
 
   return (
@@ -36,7 +37,7 @@ const File = ({file}) => {
                 color: '#2F4F4F',
               }}
             >
-             {file.name}
+              {file.name}
             </Typography>
             <div className="">
               <Accordion
@@ -49,16 +50,23 @@ const File = ({file}) => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
-                    {file.description}
-                  </Typography>
+                  <Typography>{file.description}</Typography>
                 </AccordionDetails>
               </Accordion>
             </div>
           </Grid>
           <Grid item md={2} sm={12} className="price-add-to-cart">
             <Typography>
-              <Button variant="contained" style={{ color: '#ff8c00',width:'100%',marginBottom:8 ,backgroundColor:'#fff'}} disableElevation>
+              <Button
+                variant="contained"
+                style={{
+                  color: '#ff8c00',
+                  width: '100%',
+                  marginBottom: 8,
+                  backgroundColor: '#fff',
+                }}
+                disableElevation
+              >
                 <AttachMoneyIcon fontSize="large" />
                 5.00
               </Button>
@@ -66,7 +74,14 @@ const File = ({file}) => {
             <Divider />
             <Typography>
               <Tooltip TransitionComponent={Zoom} title="Add to cart">
-                <Button variant="contained" style={{ color: '#ff8c00',width:'100%',backgroundColor:'#fff' }}>
+                <Button
+                  variant="contained"
+                  style={{
+                    color: '#ff8c00',
+                    width: '100%',
+                    backgroundColor: '#fff',
+                  }}
+                >
                   <AddShoppingCartIcon fontSize="large" />
                   Add to Cart
                 </Button>
@@ -78,6 +93,10 @@ const File = ({file}) => {
       <Toolbar />
     </Grid>
   )
+}
+
+File.propTypes = {
+  file: PropTypes.object,
 }
 
 export default File

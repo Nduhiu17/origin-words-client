@@ -61,12 +61,12 @@ module.exports = {
     },
   ],
   actions: data => {
-    // Generate index.js and index.test.js
+    // Generate filesActions.js and index.test.js
     const actions = [
       {
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/index.js',
-        templateFile: './container/index.js.hbs',
+        path: '../../app/containers/{{properCase name}}/filesActions.js',
+        templateFile: './container/filesActions.js.hbs',
         abortOnFail: true,
       },
       {

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { takeEvery, put, call } from 'redux-saga/effects'
 import { FILES } from '../constants'
 import { fetchFiles } from '../api'
-import { setError, setFiles } from '../actions'
+import { setError, setFiles } from '../actions/filesActions'
 import { setSnackbar } from "../reducers/snackbarReducer";
 
 

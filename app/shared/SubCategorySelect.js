@@ -6,6 +6,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Select from '@material-ui/core/Select'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,25 +29,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const SubCategorySelect = () => {
+export const SubCategorySelect = ({ subCategory, handleSubcategoryChange }) => {
   const classes = useStyles()
-
-  const [age, setAge] = React.useState('')
-
-  const handleSubcategoryChange = event => {
-    setAge(event.target.value)
-  }
-
   return (
     <Paper className={classes.paper} elevation={4}>
-      <FormControl className={classes.formControl} fullWidth>
+      <FormControl fullWidth>
         <InputLabel id="demo-simple-select-helper-label">
           Subcategory
         </InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={age}
+          value={subCategory}
           onChange={handleSubcategoryChange}
           autoWidth
         >
@@ -63,4 +57,9 @@ export const SubCategorySelect = () => {
       </FormControl>
     </Paper>
   )
+}
+
+SubCategorySelect.propTypes = {
+  subCategory: PropTypes.number,
+  handleSubcategoryChange: PropTypes.func,
 }
