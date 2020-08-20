@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
-import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper } from '@material-ui/core'
 
-import TablePagination from '@material-ui/core/TablePagination'
+import PropTypes from 'prop-types'
 import { CategorySelect } from './CategorySelect'
 import { FileSearch } from './FileSearch'
 import { SubCategorySelect } from './SubCategorySelect'
+import Pagination from './Pagination'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,20 +30,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PaginationComponent = () => {
+const PaginationComponent = ({
+  category,
+  handleCategoryChange,
+  subCategory,
+  handleSubcategoryChange,
+  page,
+  handleChangePage,
+  handleChangeRowsPerPage,
+  rowsPerPage,
+  categories,
+}) => {
   const classes = useStyles()
-
-  const [page, setPage] = React.useState(2)
-  const [rowsPerPage, setRowsPerPage] = React.useState(10)
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage)
-  }
-
-  const handleChangeRowsPerPage = event => {
-    setRowsPerPage(parseInt(event.target.value, 10))
-    setPage(0)
-  }
 
   return (
     <React.Fragment>
@@ -51,10 +49,17 @@ const PaginationComponent = () => {
         <FileSearch />
       </Grid>
       <Grid item xs={12} md={3} sm={12}>
-        <CategorySelect />
+        <CategorySelect
+          category={category}
+          handleCategoryChange={handleCategoryChange}
+          categories={categories}
+        />
       </Grid>
       <Grid item xs={12} md={3} sm={12}>
-        <SubCategorySelect />
+        <SubCategorySelect
+          subCategory={subCategory}
+          handleSubcategoryChange={handleSubcategoryChange}
+        />
       </Grid>
       <Grid item xs={12} md={3} sm={12}>
         <Paper className={classes.paper} elevation={4}>
@@ -72,19 +77,27 @@ const PaginationComponent = () => {
       <Grid item xs={12} md={7} />
 
       <Grid item xs={12} md={5}>
-        <Paper className={classes.paper} elevation={4}>
-          <TablePagination
-            component="div"
-            count={100}
-            page={page}
-            onChangePage={handleChangePage}
-            rowsPerPage={rowsPerPage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
-        </Paper>
+        <Pagination
+          page={page}
+          handleChangePage={handleChangePage}
+          handleChangeRowsPerPage={handleChangeRowsPerPage}
+          rowsPerPage={rowsPerPage}
+        />
       </Grid>
     </React.Fragment>
   )
+}
+
+PaginationComponent.propTypes = {
+  subCategory: PropTypes.number,
+  handleSubcategoryChange: PropTypes.func,
+  category: PropTypes.number,
+  handleCategoryChange: PropTypes.func,
+  page: PropTypes.number,
+  handleChangePage: PropTypes.func,
+  handleChangeRowsPerPage: PropTypes.func,
+  rowsPerPage: PropTypes.number,
+  categories: PropTypes.array.isRequired,
 }
 
 export default PaginationComponent

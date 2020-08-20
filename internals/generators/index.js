@@ -1,5 +1,5 @@
 /**
- * generator/index.js
+ * generator/filesActions.js
  *
  * Exports the generators so plop knows them
  */

@@ -24,7 +24,7 @@ const { BACKUPFILE_EXTENSION } = require('../generators/index');
 
 process.chdir(path.join(__dirname, '../generators'));
 
-const plop = nodePlop('./index.js');
+const plop = nodePlop('./filesActions.js');
 const componentGen = plop.getGenerator('component');
 const containerGen = plop.getGenerator('container');
 const languageGen = plop.getGenerator('language');

@@ -122,7 +122,7 @@ output: {
 
 ### Where do I put the reducer?
 
-While you can include the reducer statically in `index.js`, we don't recommend this as you lose
+While you can include the reducer statically in `filesActions.js`, we don't recommend this as you lose
 the benefits of code splitting. Instead, add it as a _composed reducer_. This means that you
 pass actions onward to a second reducer from a lower-level route reducer like so:
 
@@ -249,7 +249,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 **3) Change the position of `<GlobalStyle>` in the rendering of `<App>`**
 
-You can do that inside `containers/App/index.js`.
+You can do that inside `containers/App/filesActions.js`.
 
 More information is available in the [official documentation](https://github.com/styled-components/styled-components/blob/master/docs/existing-css.md).
 
