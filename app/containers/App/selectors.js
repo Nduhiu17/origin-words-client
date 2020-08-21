@@ -8,4 +8,12 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   )
 
-export { makeSelectLocation }
+const selectSubcategories = state => state.subcategories
+
+const makeSelectSubcategoriesById = () =>
+  createSelector(
+    selectSubcategories,
+    subcategoriesState => subcategoriesState.subcategories,
+  )
+
+export { makeSelectLocation, makeSelectSubcategoriesById }

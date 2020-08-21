@@ -7,6 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
+import { SELECT_CATEGORY } from '../constants'
+import { selectCategory } from '../actions/categorySelectAction'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,13 +32,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const CategorySelect = ({
-  category,
-  handleCategoryChange,
-  categories,
-}) => {
+export function CategorySelect({ category, handleCategoryChange, categories }) {
   const classes = useStyles()
+  const dispatch = useDispatch()
 
+  const handleClickListItem = event => {
+    const { myValue } = event.currentTarget.dataset
+    dispatch(selectCategory(parseInt(myValue, 0)))
+  }
   return (
     <Paper className={classes.paper} elevation={4}>
       <FormControl fullWidth>
@@ -51,7 +55,12 @@ export const CategorySelect = ({
           </MenuItem>
           {categories &&
             categories.map(item => (
-              <MenuItem value={item.id} key={item.id}>
+              <MenuItem
+                value={item.id}
+                key={item.id}
+                data-my-value={item.id}
+                onClick={handleClickListItem}
+              >
                 {item.name}
               </MenuItem>
             ))}
