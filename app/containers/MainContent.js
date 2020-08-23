@@ -57,7 +57,7 @@ class MainContent extends Component {
 
   render() {
     const {
-      files,
+      files: { files },
       page,
       handleChangePage,
       rowsPerPage,

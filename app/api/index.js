@@ -7,7 +7,7 @@ const fetchFiles = async () => {
     throw new Error(data.error)
   }
 
-  return data.files
+  return data
 }
 
 const fetchCategories = async () => {
