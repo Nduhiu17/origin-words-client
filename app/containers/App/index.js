@@ -15,10 +15,10 @@ import { connect } from 'react-redux'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 // import Snackbar from '../../shared/Snackbar'
 
+import { ConnectedRouter } from 'connected-react-router'
 import { AppLoader } from '../../shared/AppLoader'
 
 import GlobalStyle from '../../global-styles'
-import { ConnectedRouter } from 'connected-react-router'
 import CustomizedSnackbars from '../../shared/Snackbar'
 
 const mainContent = React.lazy(() => import('../MainContent'))
@@ -36,7 +36,7 @@ const AccountDetails = React.lazy(() => import('../myaccount/AccountDetails'))
 const Purchased = React.lazy(() => import('../myaccount/Purchased'))
 const Saved = React.lazy(() => import('../myaccount/Saved'))
 
-const App = ({ error, isLoading }) => (
+const App = ({ isLoading }) => (
   <div>
     <Suspense fallback={<LinearProgress />}>
       <Switch>

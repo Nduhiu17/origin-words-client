@@ -7,6 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
+import { selectSubCategories } from '../actions/categorySelectAction'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,29 +31,31 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const CategorySelect = ({
-  category,
-  handleCategoryChange,
-  categories,
-}) => {
+function CategorySelect({ category, categories }) {
   const classes = useStyles()
+  const dispatch = useDispatch()
 
   return (
-    <Paper className={classes.paper} elevation={4}>
+    <Paper className={classes.paper} elevation={1}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={category}
-          onChange={handleCategoryChange}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
           {categories &&
             categories.map(item => (
-              <MenuItem value={item.id} key={item.id}>
+              <MenuItem
+                value={item.id}
+                key={item.id}
+                onClick={() =>
+                  dispatch(selectSubCategories(item.subcategoriesList))
+                }
+              >
                 {item.name}
               </MenuItem>
             ))}
@@ -62,8 +66,9 @@ export const CategorySelect = ({
   )
 }
 
+export { CategorySelect }
+
 CategorySelect.propTypes = {
   category: PropTypes.number,
-  handleCategoryChange: PropTypes.func,
   categories: PropTypes.array.isRequired,
 }

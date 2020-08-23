@@ -8,8 +8,8 @@ import FormControl from '@material-ui/core/FormControl'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import SaveIcon from '@material-ui/icons/Save'
 import Button from '@material-ui/core/Button'
-import { SubCategorySelect } from '../../../shared/SubCategorySelect'
 import { CategorySelect } from '../../../shared/CategorySelect'
+import SubCategorySelect from '../../../shared/SubCategorySelect'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,113 +50,112 @@ export const FileForm = () => {
 
   return (
     <Grid>
-    <Paper elevation={8} className={classes.wrapper}>
-      <form className={classes.root} noValidate autoComplete="off" />
-      <Grid container>
-        <Grid item md={12} sm={12} xs={12}>
-          <Paper elevation={4}>
-            <FormControl
-              fullWidth
-              className={classes.margin}
-              variant="outlined"
-            >
-              <TextField
-                label="Title"
-                inputProps={{
-                  maxLength: CHARACTER_LIMIT,
-                }}
-                value={values.title}
-                helperText={`${values.title.length}/${CHARACTER_LIMIT}`}
-                onChange={handleChange('title')}
-                margin="normal"
-                variant="outlined"
-              />
-            </FormControl>
-          </Paper>
-        </Grid>
-        <Toolbar />
-        <Grid item md={12} sm={12} xs={12}>
-          <Paper elevation={4} className={classes.upload}>
-            <TextField name="upload file" type="file" />
-          </Paper>
-        </Grid>
-        <Toolbar />
-        <Toolbar />
-        <Grid item md={12} sm={12} xs={12}>
-          <Paper elevation={4}>
-            <FormControl
-              fullWidth
-              className={classes.margin}
-              variant="outlined"
-            >
-              <InputLabel htmlFor="outlined-adornment-amount">
-                Amount
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-amount"
-                value=""
-                startAdornment={
-                  <InputAdornment position="start">$</InputAdornment>
-                }
-                labelWidth={60}
-              />
-            </FormControl>
-          </Paper>
-        </Grid>
-        <Toolbar />
-        <Grid item md={12} sm={12} xs={12}>
-          <Paper elevation={4}>
-            <FormControl
-              fullWidth
-              className={classes.margin}
-              variant="outlined"
-            >
-              <TextField
-                id="outlined-error-helper-text"
-                label="Description"
-                defaultValue="Description"
-                variant="outlined"
-                className={classes.TextField}
-                rows={20}
-                multiline
-                rowsMax={8}
-              />
-            </FormControl>
-          </Paper>
-        </Grid>
-        <Toolbar />
-        <Grid item md={12} sm={12} xs={12}>
-          <Grid item md={6} sm={12} xs={12}>
-            <CategorySelect />
-          </Grid>
-        </Grid>
-        <Toolbar />
-        <Grid container>
-          <Grid item md={12} sm={12} xs={12}>
-            <Grid item md={6} sm={12} xs={12}>
-              <SubCategorySelect />
+      <Paper elevation={8} className={classes.wrapper}>
+        <form className={classes.root} noValidate autoComplete="off">
+          <Grid container>
+            <Grid item md={12} sm={12} xs={12}>
+              <Paper elevation={4}>
+                <FormControl
+                  fullWidth
+                  className={classes.margin}
+                  variant="outlined"
+                >
+                  <TextField
+                    label="Title"
+                    inputProps={{
+                      maxLength: CHARACTER_LIMIT,
+                    }}
+                    value={values.title}
+                    helperText={`${values.title.length}/${CHARACTER_LIMIT}`}
+                    onChange={handleChange('title')}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </FormControl>
+              </Paper>
+            </Grid>
+            <Toolbar />
+            <Grid item md={12} sm={12} xs={12}>
+              <Paper elevation={4} className={classes.upload}>
+                <TextField name="upload file" type="file" />
+              </Paper>
+            </Grid>
+            <Toolbar />
+            <Toolbar />
+            <Grid item md={12} sm={12} xs={12}>
+              <Paper elevation={4}>
+                <FormControl
+                  fullWidth
+                  className={classes.margin}
+                  variant="outlined"
+                >
+                  <InputLabel htmlFor="outlined-adornment-amount">
+                    Amount
+                  </InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-amount"
+                    value=""
+                    startAdornment={
+                      <InputAdornment position="start">$</InputAdornment>
+                    }
+                    labelWidth={60}
+                  />
+                </FormControl>
+              </Paper>
+            </Grid>
+            <Toolbar />
+            <Grid item md={12} sm={12} xs={12}>
+              <Paper elevation={4}>
+                <FormControl
+                  fullWidth
+                  className={classes.margin}
+                  variant="outlined"
+                >
+                  <TextField
+                    id="outlined-error-helper-text"
+                    label="Description"
+                    defaultValue="Description"
+                    variant="outlined"
+                    className={classes.TextField}
+                    rows={20}
+                    multiline
+                    rowsMax={8}
+                  />
+                </FormControl>
+              </Paper>
+            </Grid>
+            <Toolbar />
+            <Grid item md={12} sm={12} xs={12}>
+              <Grid item md={6} sm={12} xs={12}>
+                <CategorySelect />
+              </Grid>
+            </Grid>
+            <Toolbar />
+            <Grid container>
+              <Grid item md={12} sm={12} xs={12}>
+                <Grid item md={6} sm={12} xs={12}>
+                  <SubCategorySelect />
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Toolbar />
+            <Grid>
+              <Grid item md={6} sm={12} xs={12}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  className={classes.button}
+                  startIcon={<SaveIcon />}
+                  style={{ backgroundColor: '#ff8c00', color: '#fff' }}
+                >
+                  Save
+                </Button>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-
-        <Toolbar />
-        <Grid>
-          <Grid item md={6} sm={12} xs={12}>
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.button}
-              startIcon={<SaveIcon />}
-              style={{ backgroundColor: '#ff8c00', color: '#fff' }}
-            >
-              Save
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <form />
-    </Paper>
+        </form>
+      </Paper>
     </Grid>
   )
 }

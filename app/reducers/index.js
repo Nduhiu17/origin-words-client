@@ -12,6 +12,8 @@ import errorReducer from './errorReducer'
 import snackbarReducer from './snackbarReducer'
 import categoriesReducer from './categoriesReducer'
 import subcategoriesReducer from './subcategoriesReducer'
+import selectCategoryReducer from './selectCategoryReducer'
+import subcategoryReducer from './subCategoryReducer'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -25,6 +27,8 @@ export default function createReducer(injectedReducers = {}) {
     snackbar: snackbarReducer,
     categories: categoriesReducer,
     subcategories: subcategoriesReducer,
+    selectedSubcategories: selectCategoryReducer,
+    selectedSubcategory: subcategoryReducer,
 
     ...injectedReducers,
   })
