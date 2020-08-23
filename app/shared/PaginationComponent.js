@@ -6,7 +6,7 @@ import { Grid, Paper } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { CategorySelect } from './CategorySelect'
 import { FileSearch } from './FileSearch'
-import { SubCategorySelect } from './SubCategorySelect'
+import SubCategorySelect from './SubCategorySelect'
 import Pagination from './Pagination'
 
 const useStyles = makeStyles(theme => ({
@@ -59,6 +59,7 @@ const PaginationComponent = ({
         <SubCategorySelect
           subCategory={subCategory}
           handleSubcategoryChange={handleSubcategoryChange}
+          subcategories={categories}
         />
       </Grid>
       <Grid item xs={12} md={3} sm={12}>

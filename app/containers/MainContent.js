@@ -107,18 +107,12 @@ class MainContent extends Component {
   }
 }
 
-const mapStateToProps = ({
-  isLoading,
-  files,
-  error,
-  categories,
-  subcategories,
-}) => ({
-  isLoading,
-  files,
-  error,
-  categories,
-  subcategories,
+const mapStateToProps = state => ({
+  isLoading: state.isLoading,
+  files: state.files,
+  error: state.error,
+  categories: state.categories,
+  subcategories: state.subcategories,
 })
 
 const mapDispatchToProps = dispatch => ({

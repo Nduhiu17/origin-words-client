@@ -1,10 +1,10 @@
 import { SELECT_CATEGORY } from '../constants'
 
-const selectCategoryReducer = (state = {}, action) => {
+const selectCategoryReducer = (state = [], action) => {
   if (action.type === SELECT_CATEGORY) {
     return {
       ...state,
-      id: action.id,
+      subcategories: action.subcategories,
     }
   }
   return state

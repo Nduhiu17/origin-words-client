@@ -1,8 +1,8 @@
 import { SELECT_CATEGORY } from '../constants'
 
-const selectCategory = id => ({
+const selectSubCategories = subcategories => ({
   type: SELECT_CATEGORY,
-  id,
+  subcategories,
 })
 
-export { selectCategory }
+export { selectSubCategories }

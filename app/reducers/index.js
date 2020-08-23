@@ -26,7 +26,7 @@ export default function createReducer(injectedReducers = {}) {
     snackbar: snackbarReducer,
     categories: categoriesReducer,
     subcategories: subcategoriesReducer,
-    selectedCategory: selectCategoryReducer,
+    selectedSubcategories: selectCategoryReducer,
 
     ...injectedReducers,
   })
