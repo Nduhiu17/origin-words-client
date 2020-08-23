@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper } from '@material-ui/core'
@@ -63,7 +63,7 @@ const PaginationComponent = ({
         />
       </Grid>
       <Grid item xs={12} md={3} sm={12}>
-        <Paper className={classes.paper} elevation={4}>
+        <Paper className={classes.paper} elevation={1}>
           <Button
             variant="contained"
             color="inherit"

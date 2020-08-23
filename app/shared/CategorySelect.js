@@ -7,11 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import { connect, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { selectSubCategories } from '../actions/categorySelectAction'
-import { loadFiles } from '../actions/filesActions'
-import { loadCategories } from '../actions/categoriesActions'
-import { loadSubcategories } from '../actions/subcategoriesAction'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,24 +31,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function CategorySelect({ category, handleCategoryChange, categories }) {
+function CategorySelect({ category, categories }) {
   const classes = useStyles()
   const dispatch = useDispatch()
 
-  const handleClickListItem = event => {
-    const { myValue } = event.currentTarget.dataset
-    dispatch(selectSubCategories(myValue))
-  }
-
   return (
-    <Paper className={classes.paper} elevation={4}>
+    <Paper className={classes.paper} elevation={1}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={category}
-          onChange={handleCategoryChange}
         >
           <MenuItem value="">
             <em>None</em>
@@ -61,8 +52,9 @@ function CategorySelect({ category, handleCategoryChange, categories }) {
               <MenuItem
                 value={item.id}
                 key={item.id}
-                data-my-value={item.subcategoriesList}
-                onClick={handleClickListItem}
+                onClick={() =>
+                  dispatch(selectSubCategories(item.subcategoriesList))
+                }
               >
                 {item.name}
               </MenuItem>
@@ -74,22 +66,9 @@ function CategorySelect({ category, handleCategoryChange, categories }) {
   )
 }
 
-const mapStateToProps = state => ({})
-
-const mapDispatchToProps = dispatch => ({
-  // loadFiles: () => dispatch(loadFiles()),
-  // loadCategories: () => dispatch(loadCategories()),
-  // loadSubcategories: () => dispatch(loadSubcategories()),
-})
-
 export { CategorySelect }
-// export connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// )(CategorySelect)
 
 CategorySelect.propTypes = {
   category: PropTypes.number,
-  handleCategoryChange: PropTypes.func,
   categories: PropTypes.array.isRequired,
 }
