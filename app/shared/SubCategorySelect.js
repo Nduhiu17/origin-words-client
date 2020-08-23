@@ -4,12 +4,16 @@ import FormControl from '@material-ui/core/FormControl'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Select from '@material-ui/core/Select'
-// import { makeStyles } from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { selectSubCategory } from '../actions/subCategorySelectAction'
 
 class SubCategorySelect extends Component {
+  handleClick = id => {
+    this.props.selectSubCategory(id)
+  }
+
   render() {
     const { selectedSubcategories } = this.props
     return (
@@ -26,9 +30,16 @@ class SubCategorySelect extends Component {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
+
             {selectedSubcategories &&
               selectedSubcategories.map(item => (
-                <MenuItem value={item.id} key={item.id} data-my-value={item.id}>
+                <MenuItem
+                  value={item.id}
+                  key={item.id}
+                  onClick={() => {
+                    this.handleClick(item.id)
+                  }}
+                >
                   {item.name}
                 </MenuItem>
               ))}
@@ -42,13 +53,18 @@ class SubCategorySelect extends Component {
 
 SubCategorySelect.propTypes = {
   selectedSubcategories: PropTypes.array,
+  selectSubCategory: PropTypes.func,
 }
 
 const mapStateToProps = state => ({
   selectedSubcategories: state.selectedSubcategories.subcategories,
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  selectSubCategory: id => {
+    dispatch(selectSubCategory(id))
+  },
+})
 
 export default connect(
   mapStateToProps,
