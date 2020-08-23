@@ -21,7 +21,7 @@ const Pagination = ({
   const classes = useStyles()
 
   return (
-    <Paper className={classes.paper} elevation={4}>
+    <Paper className={classes.paper} elevation={1}>
       <TablePagination
         component="div"
         count={100}

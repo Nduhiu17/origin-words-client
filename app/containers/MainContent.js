@@ -8,6 +8,7 @@ import Layout from './Layout'
 import PaginationComponent from '../shared/PaginationComponent'
 import { loadFiles } from '../actions/filesActions'
 import { loadCategories } from '../actions/categoriesActions'
+import { loadSubcategories } from '../actions/subcategoriesAction'
 
 class MainContent extends Component {
   // constructor(props) {
@@ -24,6 +25,7 @@ class MainContent extends Component {
   componentDidMount() {
     this.props.loadFiles()
     this.props.loadCategories()
+    this.props.loadSubcategories()
   }
 
   // handleChangePage(newPage) {
@@ -65,6 +67,7 @@ class MainContent extends Component {
       subCategory,
       handleSubcategoryChange,
       categories,
+      subcategories,
     } = this.props
 
     return (
@@ -89,6 +92,7 @@ class MainContent extends Component {
                     handleCategoryChange={handleCategoryChange}
                     category={category}
                     categories={categories}
+                    subcategories={subcategories}
                   />
                 </Grid>
               </Grid>
@@ -103,16 +107,18 @@ class MainContent extends Component {
   }
 }
 
-const mapStateToProps = ({ isLoading, files, error, categories }) => ({
-  isLoading,
-  files,
-  error,
-  categories,
+const mapStateToProps = state => ({
+  isLoading: state.isLoading,
+  files: state.files,
+  error: state.error,
+  categories: state.categories,
+  subcategories: state.subcategories,
 })
 
 const mapDispatchToProps = dispatch => ({
   loadFiles: () => dispatch(loadFiles()),
   loadCategories: () => dispatch(loadCategories()),
+  loadSubcategories: () => dispatch(loadSubcategories()),
 })
 
 MainContent.propTypes = {
@@ -127,6 +133,9 @@ MainContent.propTypes = {
   handleChangePage: PropTypes.func,
   handleChangeRowsPerPage: PropTypes.func,
   rowsPerPage: PropTypes.number,
+  categories: PropTypes.array,
+  subcategories: PropTypes.array,
+  loadSubcategories: PropTypes.func,
 }
 
 export default connect(

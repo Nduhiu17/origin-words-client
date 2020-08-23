@@ -20,4 +20,14 @@ const fetchCategories = async () => {
   return data.categories
 }
 
-export { fetchFiles, fetchCategories }
+const fetchSubcategories = async () => {
+  const response = await fetch(`${URL}/subcategories/get-sub-categories`)
+  const data = await response.json()
+  if (response.status > 400) {
+    throw new Error(data.error)
+  }
+
+  return data.subcategories
+}
+
+export { fetchFiles, fetchCategories, fetchSubcategories }

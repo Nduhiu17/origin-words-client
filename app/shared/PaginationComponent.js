@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Paper } from '@material-ui/core'
@@ -6,7 +6,7 @@ import { Grid, Paper } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { CategorySelect } from './CategorySelect'
 import { FileSearch } from './FileSearch'
-import { SubCategorySelect } from './SubCategorySelect'
+import SubCategorySelect from './SubCategorySelect'
 import Pagination from './Pagination'
 
 const useStyles = makeStyles(theme => ({
@@ -59,10 +59,11 @@ const PaginationComponent = ({
         <SubCategorySelect
           subCategory={subCategory}
           handleSubcategoryChange={handleSubcategoryChange}
+          subcategories={categories}
         />
       </Grid>
       <Grid item xs={12} md={3} sm={12}>
-        <Paper className={classes.paper} elevation={4}>
+        <Paper className={classes.paper} elevation={1}>
           <Button
             variant="contained"
             color="inherit"

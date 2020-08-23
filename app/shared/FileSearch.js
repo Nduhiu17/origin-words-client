@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 export const FileSearch = () => {
   const classes = useStyles()
   return (
-    <Paper className={classes.paper} elevation={4}>
+    <Paper className={classes.paper} elevation={1}>
       <FormControl className={classes.margin} fullWidth>
         <TextField
           id="filled-search"
