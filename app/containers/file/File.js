@@ -15,7 +15,7 @@ import wordImg from '../../assets/images/download.png'
 
 const File = ({ file }) => (
   <Grid>
-    <Paper elevation={1}>
+    <Paper elevation={0}>
       <Grid container spacing={2}>
         <Grid item md={1}>
           <img
