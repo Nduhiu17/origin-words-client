@@ -9,18 +9,14 @@ import PaginationComponent from '../shared/PaginationComponent'
 import { loadFiles } from '../actions/filesActions'
 import { loadCategories } from '../actions/categoriesActions'
 import { loadSubcategories } from '../actions/subcategoriesAction'
+import { setSize } from '../actions/paginationActions'
 
 class MainContent extends Component {
-  // constructor(props) {
-  //   super(props)
-  //
-  //   this.state = {
-  //     page: 1,
-  //     rowsPerPage: 10,
-  //     category: '',
-  //     subCategory: '',
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+
+    this.state = {}
+  }
 
   componentDidMount() {
     this.props.loadFiles()
@@ -28,32 +24,11 @@ class MainContent extends Component {
     this.props.loadSubcategories()
   }
 
-  // handleChangePage(newPage) {
-  //   this.setState({
-  //     page: newPage,
-  //   })
-  // }
-  //
-  // handleChangeRowsPerPage(event) {
-  //   this.setState({
-  //     rowsPerPage: parseInt(event.target.value, 10),
-  //   })
-  //   this.setState({
-  //     page: 0,
-  //   })
-  // }
-  //
-  // handleCategoryChange(event) {
-  //   this.setState({
-  //     category: event.target.value,
-  //   })
-  // }
-  //
-  // handleSubcategoryChange(event) {
-  //   this.setState({
-  //     subCategory: event.target.value,
-  //   })
-  // }
+  handleChangeRowsPerPage = event => {
+    this.props.setSize(event.target.value)
+    console.log(`we are here...............${event.target.value}`)
+    this.props.loadFiles()
+  }
 
   render() {
     const {
@@ -61,7 +36,7 @@ class MainContent extends Component {
       page,
       handleChangePage,
       rowsPerPage,
-      handleChangeRowsPerPage,
+      count,
       category,
       handleCategoryChange,
       subCategory,
@@ -85,7 +60,8 @@ class MainContent extends Component {
                   <PaginationComponent
                     page={page}
                     rowsPerPage={rowsPerPage}
-                    handleChangeRowsPerPage={handleChangeRowsPerPage}
+                    count={count}
+                    handleChangeRowsPerPage={this.handleChangeRowsPerPage}
                     subCategory={subCategory}
                     handleChangePage={handleChangePage}
                     handleSubcategoryChange={handleSubcategoryChange}
@@ -113,23 +89,28 @@ const mapStateToProps = state => ({
   error: state.error,
   categories: state.categories,
   subcategories: state.subcategories,
+  page: state.files.currentPage,
+  rowsPerPage: state.files.itemsPerPage,
+  count: state.files.totalItems,
 })
 
 const mapDispatchToProps = dispatch => ({
   loadFiles: () => dispatch(loadFiles()),
   loadCategories: () => dispatch(loadCategories()),
   loadSubcategories: () => dispatch(loadSubcategories()),
+  setSize: size => dispatch(setSize(size)),
 })
 
 MainContent.propTypes = {
   loadFiles: PropTypes.func,
   loadCategories: PropTypes.func,
-  files: PropTypes.array,
+  files: PropTypes.object,
   subCategory: PropTypes.number,
   handleSubcategoryChange: PropTypes.func,
   category: PropTypes.number,
   handleCategoryChange: PropTypes.func,
   page: PropTypes.number,
+  count: PropTypes.number,
   handleChangePage: PropTypes.func,
   handleChangeRowsPerPage: PropTypes.func,
   rowsPerPage: PropTypes.number,

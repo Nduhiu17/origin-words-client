@@ -40,6 +40,7 @@ const PaginationComponent = ({
   handleChangeRowsPerPage,
   rowsPerPage,
   categories,
+  count,
 }) => {
   const classes = useStyles()
 
@@ -80,6 +81,7 @@ const PaginationComponent = ({
       <Grid item xs={12} md={5}>
         <Pagination
           page={page}
+          count={count}
           handleChangePage={handleChangePage}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
           rowsPerPage={rowsPerPage}
@@ -95,6 +97,7 @@ PaginationComponent.propTypes = {
   category: PropTypes.number,
   handleCategoryChange: PropTypes.func,
   page: PropTypes.number,
+  count: PropTypes.number,
   handleChangePage: PropTypes.func,
   handleChangeRowsPerPage: PropTypes.func,
   rowsPerPage: PropTypes.number,

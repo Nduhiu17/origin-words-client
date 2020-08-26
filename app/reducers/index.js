@@ -14,6 +14,7 @@ import categoriesReducer from './categoriesReducer'
 import subcategoriesReducer from './subcategoriesReducer'
 import selectCategoryReducer from './selectCategoryReducer'
 import subcategoryReducer from './subCategoryReducer'
+import setSizeReducer from './paginationReducer'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -29,6 +30,7 @@ export default function createReducer(injectedReducers = {}) {
     subcategories: subcategoriesReducer,
     selectedSubcategories: selectCategoryReducer,
     selectedSubcategory: subcategoryReducer,
+    size: setSizeReducer,
 
     ...injectedReducers,
   })

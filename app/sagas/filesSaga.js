@@ -1,24 +1,16 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
 import { takeEvery, put, call } from 'redux-saga/effects'
+import { select } from '@redux-saga/core/effects'
 import { FILES } from '../constants'
 import { fetchFiles } from '../api'
 import { setError, setFiles } from '../actions/filesActions'
-import { setSnackbar } from "../reducers/snackbarReducer";
+import { setSnackbar } from '../reducers/snackbarReducer'
 
-
-// const dispatch = useDispatch()
-//   console.log('====================================');
-//   console.log(dispatch);
-//   console.log('====================================');
+const getSize = state => state.size.size
 
 function* handleFilesLoad() {
-// const dispatch = useDispatch()
-
-
-
   try {
-    const files = yield call(fetchFiles)
+    const size = yield select(getSize)
+    const files = yield call(fetchFiles, 0, size || 10)
     yield put(setFiles(files))
   } catch (error) {
     // dispatch error
