@@ -29,7 +29,9 @@ const Pagination = ({
         page={page}
         onChangePage={handleChangePage}
         rowsPerPage={rowsPerPage}
+        boundaryCount={1}
         onChangeRowsPerPage={handleChangeRowsPerPage}
+        rowsPerPageOptions={[10, 15, 20, 25]}
       />
     </Paper>
   )

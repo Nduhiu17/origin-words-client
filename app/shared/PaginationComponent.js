@@ -21,7 +21,7 @@ class PaginationComponent extends Component {
       page: 0,
     }
 
-    // this.handleChangePage = this.handleChangePage.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
 
   componentDidMount() {
@@ -29,18 +29,17 @@ class PaginationComponent extends Component {
     this.props.loadSubcategories()
   }
 
-  handleChangePage(event, newPage) {
-    console.log(`we are  up meeen..............${newPage}`)
-    this.props.changePage(1)
-    // this.setState({
-    //   page: newPage,
-    // })
-    // this.props.changePage(newPage)
-    this.props.loadFiles()
+  handlePageChange(event, value) {
+    this.props.changePage(value)
+    this.setState(
+      {
+        page: value,
+      },
+      () => {
+        this.props.loadFiles()
+      },
+    )
   }
-  // handleChangePage = (event, newPage) => {
-  //   setPage(newPage)
-  // };
 
   handleChangeRowsPerPage = event => {
     this.props.setSize(event.target.value)
@@ -56,6 +55,8 @@ class PaginationComponent extends Component {
       handleSubcategoryChange,
       categories,
     } = this.props
+
+    const { page } = this.state
 
     return (
       <React.Fragment>
@@ -98,9 +99,9 @@ class PaginationComponent extends Component {
 
         <Grid item xs={12} md={5}>
           <Pagination
-            page={this.state.page}
+            page={page}
             count={count}
-            handleChangePage={newPage => this.handleChangePage(newPage)}
+            handleChangePage={this.handlePageChange}
             handleChangeRowsPerPage={this.handleChangeRowsPerPage}
             rowsPerPage={rowsPerPage}
           />
@@ -115,9 +116,9 @@ const mapStateToProps = state => ({
   error: state.error,
   categories: state.categories,
   subcategories: state.subcategories,
-  // page: state.files.currentPage,
+  page: state.page,
   rowsPerPage: state.files.itemsPerPage,
-  count: state.files.totalItems,
+  count: state.files.totalPages,
 })
 
 const mapDispatchToProps = dispatch => ({

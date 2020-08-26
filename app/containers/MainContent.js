@@ -39,7 +39,6 @@ class MainContent extends Component {
                   <PaginationComponent />
                 </Grid>
               </Grid>
-              <hr />
               <Toolbar />
               <FileList files={files} />
             </div>
