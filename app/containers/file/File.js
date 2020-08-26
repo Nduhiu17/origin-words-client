@@ -68,7 +68,7 @@ const File = ({ file }) => (
               5.00
             </Button>
           </Typography>
-          <Divider />
+          {/* <Divider /> */}
           <Typography>
             <Tooltip TransitionComponent={Zoom} title="Add to cart">
               <Button
@@ -78,6 +78,7 @@ const File = ({ file }) => (
                   width: '100%',
                   backgroundColor: '#fff',
                 }}
+                disableElevation
               >
                 <AddShoppingCartIcon fontSize="large" />
                 Add to Cart

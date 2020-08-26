@@ -133,7 +133,6 @@ PaginationComponent.propTypes = {
   handleSubcategoryChange: PropTypes.func,
   category: PropTypes.number,
   handleCategoryChange: PropTypes.func,
-  page: PropTypes.number,
   count: PropTypes.number,
   rowsPerPage: PropTypes.number,
   categories: PropTypes.array.isRequired,
