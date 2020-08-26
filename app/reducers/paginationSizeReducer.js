@@ -1,6 +1,6 @@
 import { SET_SIZE } from '../constants'
 
-const setSizeReducer = (state = 4, action) => {
+const setSizeReducer = (state = 10, action) => {
   if (action.type === SET_SIZE) {
     return {
       ...state,

@@ -1,16 +1,19 @@
-import { takeEvery, put, call } from 'redux-saga/effects'
-import { select } from '@redux-saga/core/effects'
+import { takeEvery, put, call, select } from 'redux-saga/effects'
+
 import { FILES } from '../constants'
 import { fetchFiles } from '../api'
 import { setError, setFiles } from '../actions/filesActions'
 import { setSnackbar } from '../reducers/snackbarReducer'
 
 const getSize = state => state.size.size
+const getPage = state => state.page
 
 function* handleFilesLoad() {
   try {
     const size = yield select(getSize)
-    const files = yield call(fetchFiles, 0, size || 10)
+    const page = yield select(getPage)
+
+    const files = yield call(fetchFiles, page.page || 0, size || 10)
     yield put(setFiles(files))
   } catch (error) {
     // dispatch error

@@ -11,15 +11,36 @@ import Pagination from './Pagination'
 import { loadFiles } from '../actions/filesActions'
 import { loadCategories } from '../actions/categoriesActions'
 import { loadSubcategories } from '../actions/subcategoriesAction'
-import { setSize } from '../actions/paginationActions'
+import { setSize } from '../actions/paginationSizeActions'
+import { changePage } from '../actions/changePageSizeActions'
 
 class PaginationComponent extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      page: 0,
+    }
+
+    // this.handleChangePage = this.handleChangePage.bind(this)
+  }
+
   componentDidMount() {
     this.props.loadCategories()
     this.props.loadSubcategories()
   }
 
-  handleChangePage(event, newPage) {}
+  handleChangePage(event, newPage) {
+    console.log(`we are  up meeen..............${newPage}`)
+    this.props.changePage(1)
+    // this.setState({
+    //   page: newPage,
+    // })
+    // this.props.changePage(newPage)
+    this.props.loadFiles()
+  }
+  // handleChangePage = (event, newPage) => {
+  //   setPage(newPage)
+  // };
 
   handleChangeRowsPerPage = event => {
     this.props.setSize(event.target.value)
@@ -28,7 +49,6 @@ class PaginationComponent extends Component {
 
   render() {
     const {
-      page,
       rowsPerPage,
       count,
       category,
@@ -78,9 +98,9 @@ class PaginationComponent extends Component {
 
         <Grid item xs={12} md={5}>
           <Pagination
-            page={0}
+            page={this.state.page}
             count={count}
-            handleChangePage={this.handleChangePage}
+            handleChangePage={newPage => this.handleChangePage(newPage)}
             handleChangeRowsPerPage={this.handleChangeRowsPerPage}
             rowsPerPage={rowsPerPage}
           />
@@ -95,7 +115,7 @@ const mapStateToProps = state => ({
   error: state.error,
   categories: state.categories,
   subcategories: state.subcategories,
-  page: state.files.currentPage,
+  // page: state.files.currentPage,
   rowsPerPage: state.files.itemsPerPage,
   count: state.files.totalItems,
 })
@@ -109,19 +129,18 @@ const mapDispatchToProps = dispatch => ({
 })
 
 PaginationComponent.propTypes = {
-  subCategory: PropTypes.number,
   handleSubcategoryChange: PropTypes.func,
   category: PropTypes.number,
   handleCategoryChange: PropTypes.func,
   page: PropTypes.number,
   count: PropTypes.number,
-  handleChangePage: PropTypes.func,
   rowsPerPage: PropTypes.number,
   categories: PropTypes.array.isRequired,
   loadSubcategories: PropTypes.func,
   loadCategories: PropTypes.func,
   setSize: PropTypes.func,
   loadFiles: PropTypes.func,
+  changePage: PropTypes.func,
 }
 
 export default connect(
