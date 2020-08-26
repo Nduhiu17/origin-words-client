@@ -8,10 +8,12 @@ import { Paper } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { selectSubCategory } from '../actions/subCategorySelectAction'
+import { loadFiles } from '../actions/filesActions'
 
 class SubCategorySelect extends Component {
   handleClick = id => {
     this.props.selectSubCategory(id)
+    this.props.loadFiles()
   }
 
   render() {
@@ -64,6 +66,7 @@ const mapDispatchToProps = dispatch => ({
   selectSubCategory: id => {
     dispatch(selectSubCategory(id))
   },
+  loadFiles: () => dispatch(loadFiles()),
 })
 
 export default connect(

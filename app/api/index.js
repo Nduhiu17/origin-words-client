@@ -1,8 +1,8 @@
 const URL = `http://localhost:8089/api/v1`
 
-const fetchFiles = async (page, size) => {
+const fetchFiles = async (page, size, subcategoryid) => {
   const response = await fetch(
-    `${URL}/files/get-files?page=${page}&size=${size}`,
+    `${URL}/files/get-files?page=${page}&size=${size}&subcategoryid=${subcategoryid}`,
   )
   const data = await response.json()
   if (response.status > 400) {
