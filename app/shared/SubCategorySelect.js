@@ -9,10 +9,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { selectSubCategory } from '../actions/subCategorySelectAction'
 import { loadFiles } from '../actions/filesActions'
+import { setSearchTerm } from '../actions/searchTermActions'
 
 class SubCategorySelect extends Component {
   handleClick = id => {
     this.props.selectSubCategory(id)
+    this.props.setSearchTerm('')
     this.props.loadFiles()
   }
 
@@ -56,6 +58,8 @@ class SubCategorySelect extends Component {
 SubCategorySelect.propTypes = {
   selectedSubcategories: PropTypes.array,
   selectSubCategory: PropTypes.func,
+  loadFiles: PropTypes.func,
+  setSearchTerm: PropTypes.func,
 }
 
 const mapStateToProps = state => ({
@@ -67,6 +71,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(selectSubCategory(id))
   },
   loadFiles: () => dispatch(loadFiles()),
+  setSearchTerm: () => dispatch(setSearchTerm()),
 })
 
 export default connect(

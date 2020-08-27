@@ -16,6 +16,7 @@ import selectCategoryReducer from './selectCategoryReducer'
 import subcategoryReducer from './subCategoryReducer'
 import setSizeReducer from './paginationSizeReducer'
 import changePageReducer from './changePageReducer'
+import setSearchTermReducer from './serchTermReducer'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -33,6 +34,7 @@ export default function createReducer(injectedReducers = {}) {
     selectedSubcategory: subcategoryReducer,
     size: setSizeReducer,
     page: changePageReducer,
+    searchKeyword: setSearchTermReducer,
 
     ...injectedReducers,
   })

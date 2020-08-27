@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { Grid, Paper } from '@material-ui/core'
 
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { CategorySelect } from './CategorySelect'
 import { FileSearch } from './FileSearch'
 import SubCategorySelect from './SubCategorySelect'
@@ -13,12 +13,14 @@ import { loadCategories } from '../actions/categoriesActions'
 import { loadSubcategories } from '../actions/subcategoriesAction'
 import { setSize } from '../actions/paginationSizeActions'
 import { changePage } from '../actions/changePageSizeActions'
+import { setSearchTerm } from '../actions/searchTermActions'
 
 class PaginationComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
       page: 0,
+      searchKeyword: '',
     }
 
     this.handlePageChange = this.handlePageChange.bind(this)
@@ -46,6 +48,13 @@ class PaginationComponent extends Component {
     this.props.loadFiles()
   }
 
+  handleSearchChange = event => {
+    this.setState({
+      searchKeyword: event.target.value,
+    })
+    this.props.setSearchKeyword(event.target.value)
+  }
+
   render() {
     const {
       rowsPerPage,
@@ -54,6 +63,7 @@ class PaginationComponent extends Component {
       handleCategoryChange,
       handleSubcategoryChange,
       categories,
+      // loadFiles,
     } = this.props
 
     const { page } = this.state
@@ -61,7 +71,7 @@ class PaginationComponent extends Component {
     return (
       <React.Fragment>
         <Grid item xs={12} md={3} sm={12}>
-          <FileSearch />
+          <FileSearch handleSearchChange={this.handleSearchChange} />
         </Grid>
         <Grid item xs={12} md={3} sm={12}>
           <CategorySelect
@@ -82,6 +92,7 @@ class PaginationComponent extends Component {
               variant="contained"
               color="inherit"
               disableElevation
+              disabled={!this.state.searchKeyword}
               style={{
                 display: 'flex',
                 width: '100%',
@@ -90,6 +101,7 @@ class PaginationComponent extends Component {
                 color: '#ff8c00',
                 background: 'transparent',
               }}
+              onClick={this.props.loadFiles}
             >
               Search
             </Button>
@@ -127,6 +139,7 @@ const mapDispatchToProps = dispatch => ({
   loadSubcategories: () => dispatch(loadSubcategories()),
   setSize: size => dispatch(setSize(size)),
   changePage: newPage => dispatch(changePage(newPage)),
+  setSearchKeyword: searchKeyword => dispatch(setSearchTerm(searchKeyword)),
 })
 
 PaginationComponent.propTypes = {
@@ -141,6 +154,7 @@ PaginationComponent.propTypes = {
   setSize: PropTypes.func,
   loadFiles: PropTypes.func,
   changePage: PropTypes.func,
+  setSearchKeyword: PropTypes.func,
 }
 
 export default connect(

@@ -8,13 +8,15 @@ import { setSnackbar } from '../reducers/snackbarReducer'
 const getSize = state => state.size.size
 const getPage = state => state.page
 const getSubcategory = state => state.selectedSubcategory
+const getSearchKeyword = state => state.searchKeyword
 
 function* handleFilesLoad() {
   try {
     const size = yield select(getSize)
     const page = yield select(getPage)
     const subcategory = yield select(getSubcategory)
-
+    const searchKey = yield select(getSearchKeyword)
+    const { searchKeyword } = searchKey
     const subcategoryid = subcategory.subcategoryId
 
     const files = yield call(
@@ -22,6 +24,7 @@ function* handleFilesLoad() {
       page.page || 0,
       size || 10,
       subcategoryid || '',
+      searchKeyword || '',
     )
     yield put(setFiles(files))
   } catch (error) {
