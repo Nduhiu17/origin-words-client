@@ -15,7 +15,7 @@ import wordImg from '../../assets/images/download.png'
 
 const File = ({ file }) => (
   <Grid>
-    <Paper elevation={1}>
+    <Paper elevation={0}>
       <Grid container spacing={2}>
         <Grid item md={1}>
           <img
@@ -68,7 +68,7 @@ const File = ({ file }) => (
               5.00
             </Button>
           </Typography>
-          <Divider />
+          {/* <Divider /> */}
           <Typography>
             <Tooltip TransitionComponent={Zoom} title="Add to cart">
               <Button
@@ -78,6 +78,7 @@ const File = ({ file }) => (
                   width: '100%',
                   backgroundColor: '#fff',
                 }}
+                disableElevation
               >
                 <AddShoppingCartIcon fontSize="large" />
                 Add to Cart

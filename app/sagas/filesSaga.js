@@ -1,24 +1,31 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { takeEvery, put, call } from 'redux-saga/effects'
+import { takeEvery, put, call, select } from 'redux-saga/effects'
+
 import { FILES } from '../constants'
 import { fetchFiles } from '../api'
 import { setError, setFiles } from '../actions/filesActions'
-import { setSnackbar } from "../reducers/snackbarReducer";
+import { setSnackbar } from '../reducers/snackbarReducer'
 
-
-// const dispatch = useDispatch()
-//   console.log('====================================');
-//   console.log(dispatch);
-//   console.log('====================================');
+const getSize = state => state.size.size
+const getPage = state => state.page
+const getSubcategory = state => state.selectedSubcategory
+const getSearchKeyword = state => state.searchKeyword
 
 function* handleFilesLoad() {
-// const dispatch = useDispatch()
-
-
-
   try {
-    const files = yield call(fetchFiles)
+    const size = yield select(getSize)
+    const page = yield select(getPage)
+    const subcategory = yield select(getSubcategory)
+    const searchKey = yield select(getSearchKeyword)
+    const { searchKeyword } = searchKey
+    const subcategoryid = subcategory.subcategoryId
+
+    const files = yield call(
+      fetchFiles,
+      page.page || 0,
+      size || 10,
+      subcategoryid || '',
+      searchKeyword || '',
+    )
     yield put(setFiles(files))
   } catch (error) {
     // dispatch error

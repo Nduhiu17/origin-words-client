@@ -13,10 +13,11 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Pagination = ({
-  page,
-  handleChangePage,
-  rowsPerPage,
+  count,
   handleChangeRowsPerPage,
+  rowsPerPage,
+  handleChangePage,
+  page,
 }) => {
   const classes = useStyles()
 
@@ -24,11 +25,12 @@ const Pagination = ({
     <Paper className={classes.paper} elevation={1}>
       <TablePagination
         component="div"
-        count={100}
+        count={count}
         page={page}
         onChangePage={handleChangePage}
         rowsPerPage={rowsPerPage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
+        rowsPerPageOptions={[10, 15, 25]}
       />
     </Paper>
   )
@@ -38,6 +40,7 @@ Pagination.propTypes = {
   page: PropTypes.number,
   handleChangePage: PropTypes.func,
   rowsPerPage: PropTypes.number,
+  count: PropTypes.number,
   handleChangeRowsPerPage: PropTypes.func,
 }
 

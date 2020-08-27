@@ -8,10 +8,14 @@ import { Paper } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { selectSubCategory } from '../actions/subCategorySelectAction'
+import { loadFiles } from '../actions/filesActions'
+import { setSearchTerm } from '../actions/searchTermActions'
 
 class SubCategorySelect extends Component {
   handleClick = id => {
     this.props.selectSubCategory(id)
+    this.props.setSearchTerm('')
+    this.props.loadFiles()
   }
 
   render() {
@@ -54,6 +58,8 @@ class SubCategorySelect extends Component {
 SubCategorySelect.propTypes = {
   selectedSubcategories: PropTypes.array,
   selectSubCategory: PropTypes.func,
+  loadFiles: PropTypes.func,
+  setSearchTerm: PropTypes.func,
 }
 
 const mapStateToProps = state => ({
@@ -64,6 +70,8 @@ const mapDispatchToProps = dispatch => ({
   selectSubCategory: id => {
     dispatch(selectSubCategory(id))
   },
+  loadFiles: () => dispatch(loadFiles()),
+  setSearchTerm: () => dispatch(setSearchTerm()),
 })
 
 export default connect(

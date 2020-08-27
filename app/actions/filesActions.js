@@ -4,9 +4,9 @@ const loadFiles = () => ({
   type: FILES.LOAD,
 })
 
-const setFiles = files => ({
+const setFiles = data => ({
   type: FILES.LOAD_SUCCESS,
-  files,
+  data,
 })
 
 const setError = error => ({

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FormControl from '@material-ui/core/FormControl'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
+import { setSearchTerm } from '../actions/searchTermActions'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,8 +28,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const FileSearch = () => {
+export const FileSearch = ({ handleSearchChange }) => {
   const classes = useStyles()
+
   return (
     <Paper className={classes.paper} elevation={1}>
       <FormControl className={classes.margin} fullWidth>
@@ -35,8 +39,13 @@ export const FileSearch = () => {
           label="Search keyword"
           type="search"
           variant="filled"
+          onChange={handleSearchChange}
         />
       </FormControl>
     </Paper>
   )
+}
+
+FileSearch.propTypes = {
+  handleSearchChange: PropTypes.func,
 }
