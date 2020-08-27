@@ -11,6 +11,7 @@ import Badge from '@material-ui/core/Badge'
 import { Link } from 'react-router-dom'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import LOGO from '../assets/images/logo.jpeg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,7 +61,9 @@ export default function NavMenu() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/">OriginWords</Link>
+            <Link to="/">
+              <img src={LOGO} alt="logo" style={{ width: 100 }} />
+            </Link>
           </Typography>
           <Link to="/admin" className={classes.links}>
             <Button className={classes.badge}>ADMIN DASHBOARD</Button>

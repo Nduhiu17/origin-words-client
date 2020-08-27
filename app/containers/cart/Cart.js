@@ -56,7 +56,7 @@ const Cart = () => {
             </Grid>
           </Grid>
           <CartList />
-          <Paper className={classes.totalwrapper} elevation={8}>
+          <Paper className={classes.totalwrapper} elevation={1}>
             <Grid container justify="flex-end">
               <Grid item md={8} style={{ color: 'blue' }}>
                 Pay using paypal
@@ -72,14 +72,13 @@ const Cart = () => {
                 xs={12}
                 item
                 style={{ display: 'flex', justifyContent: 'space-between' }}
-               
               >
-                <Paper className={classes.subtotal} elevation={4}>
+                <Paper className={classes.subtotal} elevation={1}>
                   <Typography variant="h6" className={classes.yellow}>
                     Subtotal
                   </Typography>
                 </Paper>
-                <Paper className={classes.subtotal} elevation={4}>
+                <Paper className={classes.subtotal} elevation={1}>
                   <Typography variant="h6" className={classes.yellow}>
                     <AttachMoneyIcon />
                     500.00
@@ -103,14 +102,13 @@ const Cart = () => {
                 sm={12}
                 item
                 style={{ display: 'flex', justifyContent: 'space-between' }}
-             
               >
-                <Paper className={classes.subtotal} elevation={4}>
+                <Paper className={classes.subtotal} elevation={1}>
                   <Typography variant="h6" className={classes.yellow}>
                     Total
                   </Typography>
                 </Paper>
-                <Paper className={classes.subtotal} elevation={4}>
+                <Paper className={classes.subtotal} elevation={1}>
                   <Typography variant="h6" className={classes.yellow}>
                     <AttachMoneyIcon />
                     500.00

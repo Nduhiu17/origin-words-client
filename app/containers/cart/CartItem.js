@@ -26,7 +26,7 @@ const useStyles = makeStyles(() =>
 export default function CartItem() {
   const classes = useStyles()
   return (
-    <Paper className={classes.item} elevation={8}>
+    <Paper className={classes.item} elevation={0}>
       <Grid container justify="space-between">
         <Grid item md={6}>
           <Grid container spacing={2}>
@@ -61,15 +61,15 @@ export default function CartItem() {
       <Grid container spacing={2} justify="flex-end">
         <Grid item md={2} xs={12} sm={12}>
           <Tooltip TransitionComponent={Zoom} title="Move to saved items">
-            <Paper style={{ padding: 10 }} elevation={8}>
+            <Paper style={{ padding: 10 }} elevation={1}>
               <FavoriteBorderIcon color="secondary" />
               <Button>save items</Button>
             </Paper>
           </Tooltip>
         </Grid>
-        <Grid style={{ marginTop: 8 }} item md={2} xs={12} sm={12}>
+        <Grid style={{ marginTop: 0 }} item md={2} xs={12} sm={12}>
           <Tooltip TransitionComponent={Zoom} title="Remove item">
-            <Paper style={{ padding: 10 }} elevation={8}>
+            <Paper style={{ padding: 10 }} elevation={1}>
               <RemoveShoppingCartIcon color="secondary" />
               <Button>Remove</Button>
             </Paper>
