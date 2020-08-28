@@ -17,6 +17,8 @@ import subcategoryReducer from './subCategoryReducer'
 import setSizeReducer from './paginationSizeReducer'
 import changePageReducer from './changePageReducer'
 import setSearchTermReducer from './serchTermReducer'
+import setLoginRequestReducer from './setLoginRequestReducer'
+import buttonLoadingReducer from './buttonLoadingReducer'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -35,6 +37,9 @@ export default function createReducer(injectedReducers = {}) {
     size: setSizeReducer,
     page: changePageReducer,
     searchKeyword: setSearchTermReducer,
+    loginRequest: setLoginRequestReducer,
+    // user: loginReducer,
+    isButtonLoading: buttonLoadingReducer,
 
     ...injectedReducers,
   })

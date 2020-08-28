@@ -30,7 +30,7 @@ const Pagination = ({
         onChangePage={handleChangePage}
         rowsPerPage={rowsPerPage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
-        rowsPerPageOptions={[10, 15, 25]}
+        rowsPerPageOptions={[2, 4, 6]}
       />
     </Paper>
   )

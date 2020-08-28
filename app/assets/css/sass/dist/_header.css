@@ -4,17 +4,16 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 65vh;
-
-  .header-content {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #2976c7;
-    z-index: 1;
-    height: 81%;
-  }
+}
+.header-wrapper .header-content {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(62, 135, 179, 0.87);
+  z-index: 1;
+  height: 81%;
 }
 
 .container {

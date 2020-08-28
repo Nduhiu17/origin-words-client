@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import LOGO from '../assets/images/logo.jpeg'
+import history from '../utils/history'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
   badge: {
     border: `2px solid ${theme.palette.background.paper}`,
+    fontSize: '10px',
   },
   links: {
     textDecoration: 'none',
@@ -46,6 +48,8 @@ export default function NavMenu() {
 
   const handleClose = () => {
     setAnchorEl(null)
+    localStorage.removeItem('user')
+    history.push('/')
   }
 
   return (
