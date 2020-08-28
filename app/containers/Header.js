@@ -23,7 +23,7 @@ export default withStyles(styles)(({ classes }) => (
           variant="h2"
           gutterBottom
           className="title-main"
-          style={{ color: '#6d9fd4' }}
+          style={{ color: '#6d9fd4', textShadow: ' 2px 2px 4px #000C66' }}
         >
           The leading online board for academic writting, and creative research.
         </Typography>
