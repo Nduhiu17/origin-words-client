@@ -20,6 +20,8 @@ import { AppLoader } from '../../shared/AppLoader'
 
 import GlobalStyle from '../../global-styles'
 import CustomizedSnackbars from '../../shared/Snackbar'
+import { ProtectedRoute } from '../../utils/ProtectedRoute'
+import { AdminRoute } from '../../utils/AdminRoute'
 
 const mainContent = React.lazy(() => import('../MainContent'))
 const Login = React.lazy(() => import('../auth/login/Login'))
@@ -43,17 +45,21 @@ const App = ({ isLoading }) => (
         <Route exact path="/" component={mainContent} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/admin" component={AdminDashboard} />
-        <Route exact path="/admin/files" component={AdminFileList} />
-        <Route
+        <ProtectedRoute exact path="/cart" component={Cart} />
+        <AdminRoute exact path="/admin" component={AdminDashboard} />
+        <AdminRoute exact path="/admin/files" component={AdminFileList} />
+        <AdminRoute
           exact
           path="/admin/categories"
           component={CategoryAndSubCategoryContainer}
         />
-        <Route exact path="/account/details" component={AccountDetails} />
-        <Route exact path="/account/purchased" component={Purchased} />
-        <Route exact path="/account/saved" component={Saved} />
+        <ProtectedRoute
+          exact
+          path="/account/details"
+          component={AccountDetails}
+        />
+        <ProtectedRoute exact path="/account/purchased" component={Purchased} />
+        <ProtectedRoute exact path="/account/saved" component={Saved} />
         <Route component={NotFoundPage} />
       </Switch>
       <AppLoader open={isLoading} />

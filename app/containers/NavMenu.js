@@ -13,6 +13,7 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import LOGO from '../assets/images/logo.jpeg'
 import history from '../utils/history'
+import isAdmin from '../utils/isAdmin'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -71,9 +72,13 @@ export default function NavMenu() {
               <img src={LOGO} alt="logo" style={{ width: 100 }} />
             </Link>
           </Typography>
-          <Link to="/admin" className={classes.links}>
-            <Button className={classes.badge}>Admin Dashboard</Button>
-          </Link>
+          {isAdmin() ? (
+            <Link to="/admin" className={classes.links}>
+              <Button className={classes.badge}>Admin Dashboard</Button>
+            </Link>
+          ) : (
+            ''
+          )}
 
           <Link to="/cart" className={classes.links}>
             <Button className={classes.badge}>
