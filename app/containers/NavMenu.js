@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import LOGO from '../assets/images/logo.jpeg'
 import history from '../utils/history'
 import isAdmin from '../utils/isAdmin'
+import isLoggedIn from '../utils/isLoggedIn'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,6 +56,7 @@ export default function NavMenu() {
   const handleLogout = () => {
     localStorage.removeItem('user')
     history.push('/')
+    setAnchorEl(null)
   }
 
   const user = JSON.parse(localStorage.getItem('user'))
@@ -103,18 +105,31 @@ export default function NavMenu() {
             onClose={handleClose}
             autoFocus
           >
-            <Link to="/login" className={classes.links}>
-              <MenuItem onClick={handleClose}>Login</MenuItem>
-            </Link>
+            {isLoggedIn() ? (
+              ''
+            ) : (
+              <Link to="/login" className={classes.links}>
+                <MenuItem onClick={handleClose}>Login</MenuItem>
+              </Link>
+            )}
 
             <Link to="/account/details" className={classes.links}>
               <MenuItem onClick={handleClose}>My Account</MenuItem>
             </Link>
 
-            <Link to="/register" className={classes.links}>
-              <MenuItem onClick={handleClose}>Register</MenuItem>
-            </Link>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            {isLoggedIn() ? (
+              ''
+            ) : (
+              <Link to="/register" className={classes.links}>
+                <MenuItem onClick={handleClose}>Register</MenuItem>
+              </Link>
+            )}
+
+            {isLoggedIn() ? (
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            ) : (
+              ''
+            )}
           </Menu>
         </Toolbar>
       </AppBar>
