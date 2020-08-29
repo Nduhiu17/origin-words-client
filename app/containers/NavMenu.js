@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
   badge: {
     border: `2px solid ${theme.palette.background.paper}`,
-    fontSize: '10px',
+    fontSize: '12px',
     textTransform: 'capitalize',
   },
   links: {
