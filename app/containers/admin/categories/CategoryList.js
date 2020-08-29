@@ -7,7 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import { CategoryItem } from './CategoryItem'
 import { CustomDialog } from '../../../shared/CustomModal'
-import { CategoryForm } from './CategoryForm'
+import CategoryForm from './CategoryForm'
 import { SubCategoryForm } from './SubCategoryForm'
 
 export const CategoryList = ({ headTitle }) => {

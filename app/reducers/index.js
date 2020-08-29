@@ -20,6 +20,7 @@ import setSearchTermReducer from './serchTermReducer'
 import setLoginRequestReducer from './setLoginRequestReducer'
 import buttonLoadingReducer from './buttonLoadingReducer'
 import setRegisterRequestReducer from './setRegisterRequestReducer'
+import setCategoryCreateRequestReducer from './setCategoryCreateRequest'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -40,8 +41,8 @@ export default function createReducer(injectedReducers = {}) {
     searchKeyword: setSearchTermReducer,
     loginRequest: setLoginRequestReducer,
     registerRequest: setRegisterRequestReducer,
-    // user: loginReducer,
     isButtonLoading: buttonLoadingReducer,
+    categoryCreateRequest: setCategoryCreateRequestReducer,
 
     ...injectedReducers,
   })

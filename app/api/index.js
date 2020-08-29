@@ -1,4 +1,9 @@
+import getToken from '../utils/getToken'
+
 const URL = `http://localhost:8089/api/v1`
+const token = getToken()
+console.log(`token..........${token}`)
+const currentToken = `Bearer ${token}`
 
 const fetchFiles = async (page, size, subcategoryid, searchKeyword) => {
   const response = await fetch(
@@ -62,11 +67,32 @@ const registerUser = async registerData => {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(registerData), // body data type must match "Content-Type" header
+  })
+  const data = await response.json()
+  if (response.status > 400) {
+    throw new Error(data.error)
+  }
+
+  return data
+}
+
+const createCategory = async categoryData => {
+  const response = await fetch(`${URL}/categories/create-category`, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: currentToken,
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(categoryData), // body data type must match "Content-Type" header
   })
   const data = await response.json()
   if (response.status > 400) {
@@ -82,4 +108,5 @@ export {
   fetchSubcategories,
   loginUser,
   registerUser,
+  createCategory,
 }
