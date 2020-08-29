@@ -3,6 +3,7 @@ import { Paper, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import AdminLayout from '../AdminLayout'
 import CategoryList from './CategoryList'
+import SubcategoryList from './SubcategoryList'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +28,7 @@ const CategoryAndSubCategoryContainer = () => {
         </Grid>
         <Grid item md={6} xs={12} sm={12}>
           <Paper className={classes.paper} elevation={4}>
-            <CategoryList headTitle="Sub Categories" />
+            <SubcategoryList headTitle="Sub Categories" />
           </Paper>
         </Grid>
       </Grid>
