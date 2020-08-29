@@ -11,6 +11,10 @@ import Badge from '@material-ui/core/Badge'
 import { Link } from 'react-router-dom'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import LOGO from '../assets/images/logo.jpeg'
+import history from '../utils/history'
+import isAdmin from '../utils/isAdmin'
+import isLoggedIn from '../utils/isLoggedIn'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +32,8 @@ const useStyles = makeStyles(theme => ({
   },
   badge: {
     border: `2px solid ${theme.palette.background.paper}`,
+    fontSize: '12px',
+    textTransform: 'capitalize',
   },
   links: {
     textDecoration: 'none',
@@ -47,24 +53,34 @@ export default function NavMenu() {
     setAnchorEl(null)
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    history.push('/')
+    setAnchorEl(null)
+  }
+
+  const user = JSON.parse(localStorage.getItem('user'))
+  let loggedInUser = ''
+  if (user) {
+    loggedInUser = user.user.name
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ background: '#fff' }}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/">OriginWords</Link>
+            <Link to="/">
+              <img src={LOGO} alt="logo" style={{ width: 100 }} />
+            </Link>
           </Typography>
-          <Link to="/admin" className={classes.links}>
-            <Button className={classes.badge}>ADMIN DASHBOARD</Button>
-          </Link>
+          {isAdmin() ? (
+            <Link to="/admin" className={classes.links}>
+              <Button className={classes.badge}>Admin Dashboard</Button>
+            </Link>
+          ) : (
+            ''
+          )}
 
           <Link to="/cart" className={classes.links}>
             <Button className={classes.badge}>
@@ -76,7 +92,9 @@ export default function NavMenu() {
           </Link>
 
           <Button className={classes.badge} onClick={handleClick}>
-            Login
+            {loggedInUser && loggedInUser.length > 0
+              ? `Welcome ${loggedInUser}`
+              : 'Login'}
           </Button>
 
           <Menu
@@ -87,18 +105,31 @@ export default function NavMenu() {
             onClose={handleClose}
             autoFocus
           >
-            <Link to="/login" className={classes.links}>
-              <MenuItem onClick={handleClose}>Login</MenuItem>
-            </Link>
+            {isLoggedIn() ? (
+              ''
+            ) : (
+              <Link to="/login" className={classes.links}>
+                <MenuItem onClick={handleClose}>Login</MenuItem>
+              </Link>
+            )}
 
             <Link to="/account/details" className={classes.links}>
               <MenuItem onClick={handleClose}>My Account</MenuItem>
             </Link>
 
-            <Link to="/register" className={classes.links}>
-              <MenuItem onClick={handleClose}>Register</MenuItem>
-            </Link>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            {isLoggedIn() ? (
+              ''
+            ) : (
+              <Link to="/register" className={classes.links}>
+                <MenuItem onClick={handleClose}>Register</MenuItem>
+              </Link>
+            )}
+
+            {isLoggedIn() ? (
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            ) : (
+              ''
+            )}
           </Menu>
         </Toolbar>
       </AppBar>

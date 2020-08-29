@@ -21,7 +21,7 @@ export const AppLoader = ({ open }) => {
   }
   return (
     <Backdrop className={classes.backdrop} open={open} onClick={handleToggle}>
-      <CircularProgress color="inherit" size={40} thickness={6}/>
+      <CircularProgress color="inherit" size={40} thickness={6} />
     </Backdrop>
   )
 }

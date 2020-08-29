@@ -22,7 +22,7 @@ const useStyles = makeStyles(() =>
       bottom: 0,
       left: 0,
       backgroundColor: '#fff',
-      color: '#ff8c00',
+      color: 'inherit',
     },
   }),
 )
@@ -37,7 +37,9 @@ export default function Footer() {
       <Paper>
         <AppBar position="static" className={classes.footer}>
           <Toolbar>
-            <Typography component="span">&copy; Academic Hub 2020</Typography>
+            <Typography component="span" style={{ fontSize: '12px' }}>
+              &copy; OriginWords 2020
+            </Typography>
           </Toolbar>
         </AppBar>
       </Paper>

@@ -19,10 +19,15 @@ export default withStyles(styles)(({ classes }) => (
   <Grid className="maincontent">
     <div className="header-wrapper">
       <div className="header-content">
-        <Typography variant="h2" gutterBottom className="title-main">
+        <Typography
+          variant="h2"
+          gutterBottom
+          className="title-main"
+          style={{ color: '#6d9fd4', textShadow: ' 2px 2px 4px #000C66' }}
+        >
           The leading online board for academic writting, and creative research.
         </Typography>
-        <Typography component="span">
+        <Typography component="span" style={{ color: '#6d9fd4' }}>
           Trusted by proffesionals across the globe
         </Typography>
       </div>
