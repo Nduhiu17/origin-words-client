@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import history from '../../../utils/history'
 import { setCategoryCreateRequest } from '../../../actions/createCategoryRequestAction'
 import { createCategory } from '../../../actions/createCategoryActions'
+import { loadCategories } from '../../../actions/categoriesActions'
 
 class CategoryForm extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class CategoryForm extends Component {
     }
     this.props.setCategoryCreateRequest(category)
     this.props.createCategory(category)
+    this.props.loadCategories()
     // history.push('/')
   }
 
@@ -121,11 +123,13 @@ const mapDispatchToProps = dispatch => ({
   createCategory: category => dispatch(createCategory(category)),
   setCategoryCreateRequest: categoryCreateRequest =>
     dispatch(setCategoryCreateRequest(categoryCreateRequest)),
+  loadCategories: () => dispatch(loadCategories()),
 })
 
 CategoryForm.propTypes = {
   setCategoryCreateRequest: PropTypes.func,
   createCategory: PropTypes.func,
+  loadCategories: PropTypes.func,
 }
 
 export default connect(

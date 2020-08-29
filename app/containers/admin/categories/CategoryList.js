@@ -1,17 +1,24 @@
-import React, { useState } from 'react'
-import { Grid, CardHeader, Typography } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { Grid, CardHeader } from '@material-ui/core'
 import List from '@material-ui/core/List'
 import Button from '@material-ui/core/Button'
 import AddIcon from '@material-ui/icons/Add'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { CategoryItem } from './CategoryItem'
 import { CustomDialog } from '../../../shared/CustomModal'
 import CategoryForm from './CategoryForm'
 import { SubCategoryForm } from './SubCategoryForm'
+import { loadCategories } from '../../../actions/categoriesActions'
 
-export const CategoryList = ({ headTitle }) => {
+const CategoryList = props => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    props.loadCategories()
+  }, [])
 
   const handleDialogClose = () => {
     setIsOpen(false)
@@ -20,6 +27,10 @@ export const CategoryList = ({ headTitle }) => {
   const handleDialogOpen = () => {
     setIsOpen(true)
   }
+
+  // const {  } = props
+
+  const { headTitle, categories } = props
   return (
     <Grid>
       <Grid container>
@@ -52,22 +63,13 @@ export const CategoryList = ({ headTitle }) => {
         <Grid container>
           <Grid item md={12} sm={12} xs={12}>
             <List className="">
-              <CategoryItem
-                title="Computer Science"
-                subtitle="Jan 9, 2014111"
-              />
-              <CategoryItem
-                title="Computer Science"
-                subtitle="Jan 9, 2014111"
-              />
-              <CategoryItem
-                title="Computer Science"
-                subtitle="Jan 9, 2014111"
-              />
-              <CategoryItem
-                title="Computer Science"
-                subtitle="Jan 9, 2014111"
-              />
+              {categories &&
+                categories.map(category => (
+                  <CategoryItem
+                    title={category.name}
+                    subtitle={category.updatedon}
+                  />
+                ))}
             </List>
           </Grid>
         </Grid>
@@ -82,3 +84,22 @@ export const CategoryList = ({ headTitle }) => {
     </Grid>
   )
 }
+
+const mapStateToProps = state => ({
+  categories: state.categories,
+})
+
+const mapDispatchToProps = dispatch => ({
+  loadCategories: () => dispatch(loadCategories()),
+})
+
+CategoryList.propTypes = {
+  loadCategories: PropTypes.func,
+  headTitle: PropTypes.string,
+  categories: PropTypes.array,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CategoryList)

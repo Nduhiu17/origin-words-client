@@ -4,7 +4,7 @@ import { setSnackbar } from '../reducers/snackbarReducer'
 
 import { CREATE_CATEGORY } from '../constants'
 import { createCategory } from '../api'
-import { setError, setMessage } from '../actions/createCategoryActions'
+import { setError } from '../actions/createCategoryActions'
 
 const getCategoryRequest = state =>
   state.categoryCreateRequest.categoryCreateRequest

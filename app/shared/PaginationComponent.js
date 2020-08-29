@@ -1,9 +1,9 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
 import { Grid, Paper } from '@material-ui/core'
 
 import PropTypes from 'prop-types'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { CategorySelect } from './CategorySelect'
 import { FileSearch } from './FileSearch'
 import SubCategorySelect from './SubCategorySelect'
