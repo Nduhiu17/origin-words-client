@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
   badge: {
     border: `2px solid ${theme.palette.background.paper}`,
     fontSize: '10px',
+    textTransform: 'capitalize',
   },
   links: {
     textDecoration: 'none',
@@ -48,8 +49,17 @@ export default function NavMenu() {
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleLogout = () => {
     localStorage.removeItem('user')
     history.push('/')
+  }
+
+  const user = JSON.parse(localStorage.getItem('user'))
+  let loggedInUser = ''
+  if (user) {
+    loggedInUser = user.user.name
   }
 
   return (
@@ -70,7 +80,7 @@ export default function NavMenu() {
             </Link>
           </Typography>
           <Link to="/admin" className={classes.links}>
-            <Button className={classes.badge}>ADMIN DASHBOARD</Button>
+            <Button className={classes.badge}>Admin Dashboard</Button>
           </Link>
 
           <Link to="/cart" className={classes.links}>
@@ -83,7 +93,9 @@ export default function NavMenu() {
           </Link>
 
           <Button className={classes.badge} onClick={handleClick}>
-            Login
+            {loggedInUser && loggedInUser.length > 0
+              ? `Welcome ${loggedInUser}`
+              : 'Login'}
           </Button>
 
           <Menu
@@ -105,7 +117,7 @@ export default function NavMenu() {
             <Link to="/register" className={classes.links}>
               <MenuItem onClick={handleClose}>Register</MenuItem>
             </Link>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
