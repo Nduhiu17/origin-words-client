@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import {Grid,Typography} from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -24,7 +24,9 @@ export const AdminFooter = () => {
       <Toolbar />
       <AppBar position="static" className={classes.footer}>
         <Toolbar>
-          <Typography component="span">&copy; Academic Hub</Typography>
+          <Typography component="span">
+            &copy; OriginWords Book store
+          </Typography>
         </Toolbar>
       </AppBar>
     </Grid>

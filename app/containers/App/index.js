@@ -15,7 +15,6 @@ import { connect } from 'react-redux'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 // import Snackbar from '../../shared/Snackbar'
 
-import { ConnectedRouter } from 'connected-react-router'
 import { AppLoader } from '../../shared/AppLoader'
 
 import GlobalStyle from '../../global-styles'

@@ -50,11 +50,11 @@ export const FileForm = () => {
 
   return (
     <Grid>
-      <Paper elevation={8} className={classes.wrapper}>
+      <Paper elevation={0} className={classes.wrapper}>
         <form className={classes.root} noValidate autoComplete="off">
           <Grid container>
             <Grid item md={12} sm={12} xs={12}>
-              <Paper elevation={4}>
+              <Paper elevation={0}>
                 <FormControl
                   fullWidth
                   className={classes.margin}
@@ -76,14 +76,14 @@ export const FileForm = () => {
             </Grid>
             <Toolbar />
             <Grid item md={12} sm={12} xs={12}>
-              <Paper elevation={4} className={classes.upload}>
+              <Paper elevation={0} className={classes.upload}>
                 <TextField name="upload file" type="file" />
               </Paper>
             </Grid>
             <Toolbar />
             <Toolbar />
             <Grid item md={12} sm={12} xs={12}>
-              <Paper elevation={4}>
+              <Paper elevation={0}>
                 <FormControl
                   fullWidth
                   className={classes.margin}
@@ -105,7 +105,7 @@ export const FileForm = () => {
             </Grid>
             <Toolbar />
             <Grid item md={12} sm={12} xs={12}>
-              <Paper elevation={4}>
+              <Paper elevation={0}>
                 <FormControl
                   fullWidth
                   className={classes.margin}
@@ -141,7 +141,8 @@ export const FileForm = () => {
 
             <Toolbar />
             <Grid>
-              <Grid item md={6} sm={12} xs={12}>
+              <Toolbar />
+              <Grid item md={12} sm={12} xs={12}>
                 <Button
                   variant="contained"
                   size="large"

@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, Button, Paper, Typography } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import AdminFile from './AdminFile'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import AdminLayout from '../AdminLayout'
 import PaginationComponent from '../../../shared/PaginationComponent'
 
 import { CustomDialog } from '../../../shared/CustomModal'
 import { FileForm } from './FileForm'
+import { loadFiles } from '../../../actions/filesActions'
+import FileList from '../../file/FileList'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -18,7 +21,7 @@ const useStyles = makeStyles(() =>
   }),
 )
 
-const AdminFileList = () => {
+const AdminFileList = props => {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -29,6 +32,14 @@ const AdminFileList = () => {
   const handleDialogOpen = () => {
     setIsOpen(true)
   }
+  useEffect(() => {
+    props.loadFiles()
+  }, [])
+
+  const {
+    files: { files },
+  } = props
+
   return (
     <AdminLayout>
       <Grid container spacing={1}>
@@ -36,11 +47,7 @@ const AdminFileList = () => {
           <PaginationComponent />
         </Grid>
       </Grid>
-      <Grid
-        container
-        justify="flex-end"
-        className={classes.create}
-      >
+      <Grid container justify="flex-end" className={classes.create}>
         <Paper elevation={4}>
           <Typography>
             <Button
@@ -57,10 +64,11 @@ const AdminFileList = () => {
         </Paper>
       </Grid>
 
-      <AdminFile />
-      <AdminFile />
-      <AdminFile />
-      <AdminFile />
+      {/* <AdminFile /> */}
+      {/* <AdminFile /> */}
+      {/* <AdminFile /> */}
+      {/* <AdminFile /> */}
+      <FileList files={files} />
       <CustomDialog
         isOpen={isOpen}
         handleClose={handleDialogClose}
@@ -72,4 +80,20 @@ const AdminFileList = () => {
   )
 }
 
-export default AdminFileList
+const mapStateToProps = state => ({
+  files: state.files,
+})
+
+const mapDispatchToProps = dispatch => ({
+  loadFiles: () => dispatch(loadFiles()),
+})
+
+AdminFileList.propTypes = {
+  loadFiles: PropTypes.func,
+  files: PropTypes.object,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AdminFileList)
