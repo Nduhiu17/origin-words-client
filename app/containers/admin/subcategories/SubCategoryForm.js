@@ -5,12 +5,16 @@ import SaveIcon from '@material-ui/icons/Save'
 import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import history from '../../../utils/history'
-import { setCategoryCreateRequest } from '../../../actions/createCategoryRequestAction'
-import { createCategory } from '../../../actions/createCategoryActions'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 import { loadCategories } from '../../../actions/categoriesActions'
+import { selectaSubCategory } from '../../../actions/selectAsubCategoryAction'
+import { setSubCategoryCreateRequest } from '../../../actions/setSubCategoryRequestAction'
+import { createSubCategory } from '../../../actions/createSubCategoryAction'
+import { loadSubcategories } from '../../../actions/subcategoriesAction'
 
-class CategoryForm extends Component {
+class SubCategoryForm extends Component {
   constructor(props) {
     super(props)
 
@@ -20,26 +24,40 @@ class CategoryForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.onSubcategorySubmit = this.onSubcategorySubmit.bind(this)
   }
+
+  componentDidMount() {
+    this.props.loadCategories()
+  }
+
+  // handleClick = id => {
+  //   this.props.selectSubCategory(id)
+  //   // this.props.setSearchTerm('')
+  //   // this.props.loadFiles()
+  // }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  onSubmit(e) {
+  onSubcategorySubmit(e) {
     e.preventDefault()
-    const category = {
+    const subCategoryData = {
       name: this.state.name,
       description: this.state.description,
     }
-    this.props.setCategoryCreateRequest(category)
-    this.props.loadCategories()
+
+    this.props.setSubCategoryCreateRequest(subCategoryData)
+    // this.props.createSubCategory(subCategoryData)
+    this.props.loadSubcategories()
+    // history.push('/')
   }
 
   render() {
     const CHARACTER_LIMIT = 46
     const { name, description } = this.state
+    const { categories } = this.props
     return (
       <Grid>
         <Paper elevation={0} style={{ padding: 20 }}>
@@ -47,7 +65,7 @@ class CategoryForm extends Component {
             noValidate
             autoComplete="off"
             style={{ width: '80%' }}
-            onSubmit={this.onSubmit}
+            onSubmit={this.onSubcategorySubmit}
           >
             <Grid container>
               <Grid item md={12} sm={12} xs={12}>
@@ -89,7 +107,38 @@ class CategoryForm extends Component {
                   </FormControl>
                 </Paper>
               </Grid>
-
+              <Toolbar />
+              <Toolbar />
+              <Grid item md={12} sm={12} xs={12}>
+                <Paper elevation={0}>
+                  <FormControl style={{ width: '30%' }}>
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Category
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      onChange={this.handleChange}
+                    >
+                      <MenuItem value="">
+                        <em>Select</em>
+                      </MenuItem>
+                      {categories &&
+                        categories.map(item => (
+                          <MenuItem
+                            value={item.id}
+                            key={item.id}
+                            onClick={() =>
+                              this.props.selectaSubCategory(item.id)
+                            }
+                          >
+                            {item.name}
+                          </MenuItem>
+                        ))}
+                    </Select>
+                  </FormControl>
+                </Paper>
+              </Grid>
+              <Toolbar />
               <Toolbar />
               <Grid>
                 <Toolbar />
@@ -113,25 +162,28 @@ class CategoryForm extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isLoading: state.isLoading,
-  error: state.error,
   isButtonLoading: state.isButtonLoading,
+  categories: state.categories,
 })
 
 const mapDispatchToProps = dispatch => ({
-  createCategory: category => dispatch(createCategory(category)),
-  setCategoryCreateRequest: categoryCreateRequest =>
-    dispatch(setCategoryCreateRequest(categoryCreateRequest)),
   loadCategories: () => dispatch(loadCategories()),
+  selectaSubCategory: selectedSubCat =>
+    dispatch(selectaSubCategory(selectedSubCat)),
+  setSubCategoryCreateRequest: subcategoryCreateRequest =>
+    dispatch(setSubCategoryCreateRequest(subcategoryCreateRequest)),
+  loadSubcategories: () => dispatch(loadSubcategories()),
 })
 
-CategoryForm.propTypes = {
-  setCategoryCreateRequest: PropTypes.func,
-  createCategory: PropTypes.func,
+SubCategoryForm.propTypes = {
+  categories: PropTypes.array,
   loadCategories: PropTypes.func,
+  setSubCategoryCreateRequest: PropTypes.func,
+  selectaSubCategory: PropTypes.func,
+  loadSubcategories: PropTypes.func,
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CategoryForm)
+)(SubCategoryForm)

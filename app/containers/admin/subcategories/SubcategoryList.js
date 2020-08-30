@@ -7,10 +7,10 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { CategoryItem } from './CategoryItem'
+import { CategoryItem } from '../categories/CategoryItem'
 import { CustomDialog } from '../../../shared/CustomModal'
-import CategoryForm from './CategoryForm'
-import { SubCategoryForm } from './SubCategoryForm'
+import CategoryForm from '../categories/CategoryForm'
+import SubCategoryForm from './SubCategoryForm'
 import { loadSubcategories } from '../../../actions/subcategoriesAction'
 
 const SubcategoryList = props => {
@@ -47,7 +47,10 @@ const SubcategoryList = props => {
           </Grid>
           <Grid item md={3} />
           <Grid item md={3}>
-            <Tooltip TransitionComponent={Zoom} title="Create new">
+            <Tooltip
+              TransitionComponent={Zoom}
+              title={`Create new ${headTitle}`}
+            >
               <Button
                 variant="contained"
                 className=""
@@ -77,9 +80,9 @@ const SubcategoryList = props => {
       <CustomDialog
         isOpen={isOpen}
         handleClose={handleDialogClose}
-        title="Create"
+        title={`Create ${headTitle}`}
       >
-        {headTitle === 'Categories' ? <CategoryForm /> : <SubCategoryForm />}
+        <SubCategoryForm />
       </CustomDialog>
     </Grid>
   )

@@ -8,8 +8,6 @@ import { setError, setToken } from '../actions/registerActions'
 
 const getRegisterRequest = state => state.registerRequest.registerRequest
 
-console.log(`>>>>>>>>>>>>>>>>><<<<<<<<<<we are coming${getRegisterRequest}`)
-
 function* handleUserRegister() {
   const registrationData = yield select(getRegisterRequest)
   try {

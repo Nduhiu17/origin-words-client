@@ -21,6 +21,8 @@ import setLoginRequestReducer from './setLoginRequestReducer'
 import buttonLoadingReducer from './buttonLoadingReducer'
 import setRegisterRequestReducer from './setRegisterRequestReducer'
 import setCategoryCreateRequestReducer from './setCategoryCreateRequest'
+import selectasubcategoryReducer from './selectasubcategoryReducer'
+import setSubCategoryCreateRequestReducer from './setSubCategoryToCreateReducer'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -43,6 +45,8 @@ export default function createReducer(injectedReducers = {}) {
     registerRequest: setRegisterRequestReducer,
     isButtonLoading: buttonLoadingReducer,
     categoryCreateRequest: setCategoryCreateRequestReducer,
+    selectedCat: selectasubcategoryReducer,
+    subCatData: setSubCategoryCreateRequestReducer,
 
     ...injectedReducers,
   })

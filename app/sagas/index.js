@@ -6,6 +6,7 @@ import subcategoriesSaga from './subcategoriesSaga'
 import loginSaga from './loginSaga'
 import registerSaga from './registerSaga'
 import createCategorySaga from './createCategorySaga'
+import createSubCategorySaga from './createSubCategorySaga'
 
 export default function* rootSaga() {
   yield all([
@@ -15,5 +16,6 @@ export default function* rootSaga() {
     loginSaga(),
     registerSaga(),
     createCategorySaga(),
+    createSubCategorySaga(),
   ])
 }

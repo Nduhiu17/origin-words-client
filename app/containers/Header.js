@@ -23,12 +23,16 @@ export default withStyles(styles)(({ classes }) => (
           variant="h2"
           gutterBottom
           className="title-main"
-          style={{ color: '#6d9fd4', textShadow: ' 2px 2px 4px #000C66' }}
+          style={{
+            color: '#6d9fd4',
+            textShadow: ' 2px 2px 4px #000C66',
+            textTransform: 'capitalize',
+          }}
         >
-          The leading online board for academic writting, and creative research.
+          Shop our 3 million books online.Free store pick up available
         </Typography>
         <Typography component="span" style={{ color: '#6d9fd4' }}>
-          Trusted by proffesionals across the globe
+          What we say is, a town isn’t a town without a bookstore.
         </Typography>
       </div>
     </div>

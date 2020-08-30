@@ -108,7 +108,11 @@ const AdminLayout = props => {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
-        style={{ backgroundColor: '#fff', color: '#F95700FF' }}
+        style={{
+          backgroundColor: '#fff',
+          color: '#F95700FF',
+          boxShadow: 'none',
+        }}
       >
         <Toolbar>
           <IconButton
@@ -166,7 +170,7 @@ const AdminLayout = props => {
         </List>
         <Divider />
         <List>
-          {supportRoutes.map((route,index) => (
+          {supportRoutes.map((route, index) => (
             <Link to={route.path} key={index}>
               <ListItem button key={route.name}>
                 <Tooltip TransitionComponent={Zoom} title={route.name}>

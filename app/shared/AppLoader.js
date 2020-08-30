@@ -13,14 +13,8 @@ const useStyles = makeStyles(theme => ({
 export const AppLoader = ({ open }) => {
   const classes = useStyles()
 
-  // const handleClose = () => {
-  //     setOpen(false);
-  // };
-  const handleToggle = () => {
-    setOpen(!open)
-  }
   return (
-    <Backdrop className={classes.backdrop} open={open} onClick={handleToggle}>
+    <Backdrop className={classes.backdrop} open={open}>
       <CircularProgress color="inherit" size={40} thickness={6} />
     </Backdrop>
   )

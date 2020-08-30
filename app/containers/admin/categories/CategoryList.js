@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import { CategoryItem } from './CategoryItem'
 import { CustomDialog } from '../../../shared/CustomModal'
 import CategoryForm from './CategoryForm'
-import { SubCategoryForm } from './SubCategoryForm'
+import SubCategoryForm from '../subcategories/SubCategoryForm'
 import { loadCategories } from '../../../actions/categoriesActions'
 
 const CategoryList = props => {
@@ -47,7 +47,10 @@ const CategoryList = props => {
           </Grid>
           <Grid item md={3} />
           <Grid item md={3}>
-            <Tooltip TransitionComponent={Zoom} title="Create new">
+            <Tooltip
+              TransitionComponent={Zoom}
+              title={`Create new ${headTitle}`}
+            >
               <Button
                 variant="contained"
                 className=""
@@ -77,9 +80,9 @@ const CategoryList = props => {
       <CustomDialog
         isOpen={isOpen}
         handleClose={handleDialogClose}
-        title="Create"
+        title={`Create ${headTitle}`}
       >
-        {headTitle === 'Categories' ? <CategoryForm /> : <SubCategoryForm />}
+        <CategoryForm />
       </CustomDialog>
     </Grid>
   )

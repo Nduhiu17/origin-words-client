@@ -50,9 +50,7 @@ class MainContent extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.isLoading,
   files: state.files,
-  error: state.error,
 })
 
 const mapDispatchToProps = dispatch => ({
