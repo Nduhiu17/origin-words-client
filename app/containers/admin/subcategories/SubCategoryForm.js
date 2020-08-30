@@ -31,12 +31,6 @@ class SubCategoryForm extends Component {
     this.props.loadCategories()
   }
 
-  // handleClick = id => {
-  //   this.props.selectSubCategory(id)
-  //   // this.props.setSearchTerm('')
-  //   // this.props.loadFiles()
-  // }
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }

@@ -103,7 +103,17 @@ const File = ({ file }) => {
               </Tooltip>
             </Grid>
           ) : (
-            ''
+            <Grid
+              item
+              md={2}
+              sm={12}
+              className="price-adds-to-cart"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            />
           )}
           <Grid item md={2} sm={12} className="price-add-to-cart">
             <Typography>
