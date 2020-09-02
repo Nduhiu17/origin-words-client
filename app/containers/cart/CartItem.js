@@ -7,7 +7,6 @@ import { Paper, Grid, Button } from '@material-ui/core'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import wordImg from '../../assets/images/download.png'
-import { addQuantity } from '../../actions/cartActions'
 
 const useStyles = makeStyles(() =>
   createStyles({

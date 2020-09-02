@@ -4,6 +4,7 @@ import { Container, Grid, Typography, Paper, Toolbar } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import CartList from './CartList'
 import paypalImg from '../../assets/images/paypal.png'
 import Layout from '../Layout'
@@ -38,13 +39,14 @@ const useStyles = makeStyles(() =>
 
 const Cart = props => {
   const classes = useStyles()
-  const { total } = props
+  const { total, cartItems } = props
+  const totalItems = cartItems.length
   return (
     <Layout>
       <Container>
         <Paper className={classes.root} elevation={10}>
           <Typography variant="h3">Cart</Typography>
-          <Typography variant="h6">Your order(2 items)</Typography>
+          <Typography variant="h6">Your order({totalItems} items)</Typography>
           <Grid container justify="space-between" className={classes.header}>
             <Grid item md={6}>
               <Typography variant="h6">ITEM</Typography>
@@ -146,6 +148,11 @@ const Cart = props => {
       </Container>
     </Layout>
   )
+}
+
+Cart.propTypes = {
+  total: PropTypes.number,
+  addedItems: PropTypes.number,
 }
 
 const mapStateToProps = state => ({
