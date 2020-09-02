@@ -8,7 +8,7 @@ import AdminLayout from '../AdminLayout'
 import PaginationComponent from '../../../shared/PaginationComponent'
 
 import { CustomDialog } from '../../../shared/CustomModal'
-import { FileForm } from './FileForm'
+import FileForm from './FileForm'
 import { loadFiles } from '../../../actions/filesActions'
 import FileList from '../../file/FileList'
 
@@ -63,11 +63,6 @@ const AdminFileList = props => {
           </Typography>
         </Paper>
       </Grid>
-
-      {/* <AdminFile /> */}
-      {/* <AdminFile /> */}
-      {/* <AdminFile /> */}
-      {/* <AdminFile /> */}
       <FileList files={files} />
       <CustomDialog
         isOpen={isOpen}

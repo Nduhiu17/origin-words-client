@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Paper, Grid, Typography, Toolbar, Divider } from '@material-ui/core'
+import { Paper, Grid, Typography, Toolbar } from '@material-ui/core'
 import Link from '@material-ui/core/Link'
 
 import Accordion from '@material-ui/core/Accordion'
@@ -16,7 +16,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import wordImg from '../../assets/images/download.png'
 import isAdmin from '../../utils/isAdmin'
 import { CustomDialog } from '../../shared/CustomModal'
-import { FileForm } from '../admin/files/FileForm'
+import FileForm from '../admin/files/FileForm'
 
 const File = ({ file }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -41,7 +41,7 @@ const File = ({ file }) => {
               className="file-image"
             />
           </Grid>
-          <Grid item md={7}>
+          <Grid item md={8}>
             <Typography
               style={{
                 fontWeight: 500,
@@ -71,36 +71,29 @@ const File = ({ file }) => {
           {isAdmin() === true ? (
             <Grid
               item
-              md={2}
+              md={1}
               sm={12}
-              className="price-adds-to-cart"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
               }}
             >
-              <Tooltip TransitionComponent={Zoom} title="Delete file">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  size="small"
-                  disableElevation
-                >
-                  <DeleteIcon style={{ marginRight: 12 }} />
-                  Delete
-                </Button>
-              </Tooltip>
-              <Tooltip TransitionComponent={Zoom} title="Edit file content">
-                <Button
-                  variant="contained"
-                  size="small"
-                  onClick={handleDialogOpen}
-                >
-                  <EditIcon style={{ marginRight: 12 }} />
-                  Edit
-                </Button>
-              </Tooltip>
+              <Typography style={{ marginBottom: 40 }}>
+                <Tooltip TransitionComponent={Zoom} title="Delete record">
+                  <DeleteIcon color="secondary" fontSize="small" />
+                </Tooltip>
+              </Typography>
+              <Typography>
+                <Tooltip TransitionComponent={Zoom} title="Add to cart">
+                  <Tooltip TransitionComponent={Zoom} title="Edit content">
+                    <EditIcon
+                      color="action"
+                      fontSize="small"
+                      onClick={handleDialogOpen}
+                    />
+                  </Tooltip>
+                </Tooltip>
+              </Typography>
             </Grid>
           ) : (
             <Grid
@@ -115,7 +108,7 @@ const File = ({ file }) => {
               }}
             />
           )}
-          <Grid item md={2} sm={12} className="price-add-to-cart">
+          <Grid item md={2} sm={12} className="price-add-cto-cart">
             <Typography>
               <Button
                 variant="contained"
@@ -128,7 +121,7 @@ const File = ({ file }) => {
                 disableElevation
               >
                 <AttachMoneyIcon fontSize="large" />
-                5.00
+                {file.price}
               </Button>
             </Typography>
             <Typography>

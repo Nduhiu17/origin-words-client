@@ -126,6 +126,34 @@ const createSubCategory = async (subcategoryData, subcategoryid) => {
   return data
 }
 
+const uploadFile = async formData => {
+  const dataTopost = new URLSearchParams()
+  // eslint-disable-next-line no-restricted-syntax
+  for (const pair of formData) {
+    dataTopost.append(pair[0], pair[1])
+  }
+
+  const response = await fetch(`${URL}/files`, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: currentToken,
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: dataTopost, // body data type must match "Content-Type" header
+  })
+  const data = await response.json()
+  if (response.status > 400) {
+    throw new Error(data.error)
+  }
+
+  return data
+}
+
 export {
   fetchFiles,
   fetchCategories,
@@ -134,4 +162,5 @@ export {
   registerUser,
   createCategory,
   createSubCategory,
+  uploadFile,
 }

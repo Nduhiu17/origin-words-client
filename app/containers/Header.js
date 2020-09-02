@@ -29,10 +29,10 @@ export default withStyles(styles)(({ classes }) => (
             textTransform: 'capitalize',
           }}
         >
-          Shop our 3 million books online.Free store pick up available
+          The leading online board for academic writing and creative research
         </Typography>
         <Typography component="span" style={{ color: '#6d9fd4' }}>
-          What we say is, a town isn’t a town without a bookstore.
+          Trusted by professionals across the globe
         </Typography>
       </div>
     </div>

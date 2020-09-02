@@ -10,42 +10,42 @@ const dashboardRoutes = [
   {
     path: '/admin',
     name: 'Dasboard',
-    icon: <DashboardIcon color="action" fontSize="large" />,
+    icon: <DashboardIcon color="action" fontSize="small" />,
     routes: [],
   },
   {
     path: '/admin/files',
     name: 'Files',
-    icon: <LibraryBooksIcon color="action" fontSize="large" />,
+    icon: <LibraryBooksIcon color="action" fontSize="small" />,
     routes: [],
   },
   {
     path: '/admin/categories',
     name: 'Categories',
-    icon: <CategoryIcon color="action" fontSize="large" />,
+    icon: <CategoryIcon color="action" fontSize="small" />,
     routes: [],
   },
-];
+]
 
 export const supportRoutes = [
   {
     path: '/admin/users',
     name: 'Users',
-    icon: <AccountCircleIcon color="action" fontSize="large" />,
+    icon: <AccountCircleIcon color="action" fontSize="small" />,
     routes: [],
   },
   {
     path: '/admin/admin',
     name: 'Orders',
-    icon: <BusinessCenterIcon color="action" fontSize="large" />,
+    icon: <BusinessCenterIcon color="action" fontSize="small" />,
     routes: [],
   },
   {
     path: '/admin/market',
     name: 'Accounts',
-    icon: <AccountBalanceIcon color="action" fontSize="large" />,
+    icon: <AccountBalanceIcon color="action" fontSize="small" />,
     routes: [],
   },
-];
+]
 
-export default dashboardRoutes;
+export default dashboardRoutes

@@ -111,7 +111,7 @@ class SubCategoryForm extends Component {
                     </InputLabel>
                     <Select
                       labelId="demo-simple-select-helper-label"
-                      onChange={this.handleChange}
+                      // onChange={this.handleChange}
                     >
                       <MenuItem value="">
                         <em>Select</em>
