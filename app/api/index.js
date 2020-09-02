@@ -1,6 +1,6 @@
 import getToken from '../utils/getToken'
 
-const URL = `http://localhost:8089/api/v1`
+const URL = `https://hub-api.herokuapp.com/api/v1`
 const token = getToken()
 const currentToken = `Bearer ${token}`
 

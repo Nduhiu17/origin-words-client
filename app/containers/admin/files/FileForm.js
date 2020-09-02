@@ -42,13 +42,6 @@ class FileForm extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  // handleCategoryChange(id) {
-  //   console.log(`event.target.value${event.target.value}`)
-  //   this.setState({
-  //     categoryId: id,
-  //   })
-  // }
-
   handleCategoryChange = (subcategoriesList, categoryID) => {
     this.props.selectSubCategories(subcategoriesList)
     this.setState({
@@ -70,7 +63,7 @@ class FileForm extends Component {
     const fileUploadRequest = new FormData()
     fileUploadRequest.append('file', this.state.selectedFile)
 
-    fetch('http://localhost:8089/api/v1/files', {
+    fetch('https://hub-api.herokuapp.com/api/v1/files', {
       method: 'POST',
       body: fileUploadRequest,
     })
@@ -92,7 +85,7 @@ class FileForm extends Component {
             price: this.state.price,
           }
           fetch(
-            `http://localhost:8089/api/v1/files/create-file/${
+            `https://hub-api.herokuapp.com/api/v1/files/create-file/${
               this.state.categoryId
             }/${this.state.subcategoryId}`,
             {
@@ -301,7 +294,11 @@ const mapDispatchToProps = dispatch => ({
 })
 
 FileForm.propTypes = {
-  loadFiles: PropTypes.func,
+  loadCategories: PropTypes.func,
+  subcategories: PropTypes.array,
+  categories: PropTypes.array,
+  setSnackbar: PropTypes.func,
+  selectSubCategories: PropTypes.func,
 }
 
 export default connect(
