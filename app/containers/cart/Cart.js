@@ -127,20 +127,25 @@ const Cart = props => {
               <Grid
                 md={6}
                 sm={12}
+                xs={12}
                 item
                 style={{ display: 'flex', justifyContent: 'space-between' }}
                 className="cart-cards"
               >
-                <Paper className={classes.subtotal}>
-                  <Typography variant="h6" className={classes.yellow}>
-                    Continue Shopping
-                  </Typography>
-                </Paper>
-                <Paper className={classes.subtotal}>
-                  <Typography variant="h6" className={classes.yellow}>
-                    Proceed to checkout
-                  </Typography>
-                </Paper>
+                <Grid item sm={12} xs={12}>
+                  <Paper className={classes.subtotal}>
+                    <Typography variant="h6" className={classes.yellow}>
+                      Continue Shopping
+                    </Typography>
+                  </Paper>
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <Paper className={classes.subtotal}>
+                    <Typography variant="h6" className={classes.yellow}>
+                      Proceed to checkout
+                    </Typography>
+                  </Paper>
+                </Grid>
               </Grid>
             </Grid>
           </Paper>

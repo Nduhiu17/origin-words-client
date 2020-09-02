@@ -33,7 +33,6 @@ class LoginForm extends Component {
     }
     this.props.setLoginRequest(user)
     this.props.loginUser(user)
-    history.push('/')
   }
 
   render() {
@@ -111,6 +110,7 @@ const mapDispatchToProps = dispatch => ({
 LoginForm.propTypes = {
   loginUser: PropTypes.func,
   setLoginRequest: PropTypes.func,
+  isButtonLoading: PropTypes.bool,
 }
 
 export default connect(

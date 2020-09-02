@@ -107,7 +107,7 @@ const File = props => {
           ) : (
             <Grid
               item
-              md={2}
+              md={1}
               sm={12}
               className="price-adds-to-cart"
               style={{

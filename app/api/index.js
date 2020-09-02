@@ -51,7 +51,7 @@ const loginUser = async loginData => {
     body: JSON.stringify(loginData), // body data type must match "Content-Type" header
   })
   const data = await response.json()
-  if (response.status > 400) {
+  if (response.status >= 400) {
     throw new Error(data.error)
   }
 
@@ -72,7 +72,7 @@ const registerUser = async registerData => {
     body: JSON.stringify(registerData), // body data type must match "Content-Type" header
   })
   const data = await response.json()
-  if (response.status > 400) {
+  if (response.status >= 400) {
     throw new Error(data.error)
   }
 

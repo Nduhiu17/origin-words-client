@@ -37,7 +37,7 @@ class RegisterForm extends Component {
 
     this.props.setRegisterRequest(user)
     this.props.registerUser(user)
-    history.push('/')
+    history.push('/login')
   }
 
   render() {

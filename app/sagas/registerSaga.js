@@ -5,6 +5,7 @@ import { setSnackbar } from '../reducers/snackbarReducer'
 import { USER_REGISTER } from '../constants'
 import { registerUser } from '../api'
 import { setError, setToken } from '../actions/registerActions'
+import history from '../utils/history'
 
 const getRegisterRequest = state => state.registerRequest.registerRequest
 
@@ -13,10 +14,11 @@ function* handleUserRegister() {
   try {
     const userTokenData = yield call(registerUser, registrationData)
     yield put(setToken(userTokenData))
-    localStorage.setItem('user', JSON.stringify(userTokenData))
+    // localStorage.setItem('user', JSON.stringify(userTokenData))
   } catch (error) {
     // dispatch error
     yield put(setError(error.toString()))
+    history.push('/register')
     yield put(setSnackbar(true, 'error', error.toString()))
   }
 }
