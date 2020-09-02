@@ -29,10 +29,12 @@ export default withStyles(styles)(({ classes }) => (
             textTransform: 'capitalize',
           }}
         >
-          The leading online board for academic writing and creative research
+          The leading online book shop for quality e-books.Focus on making
+          yourself better
         </Typography>
         <Typography component="span" style={{ color: '#6d9fd4' }}>
-          Trusted by professionals across the globe
+          If Fifty Shades is your idea of a good book, you have no idea what a
+          good book is.
         </Typography>
       </div>
     </div>
