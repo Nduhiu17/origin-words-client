@@ -3,9 +3,12 @@ import { Container, Grid, Typography, Paper, Toolbar } from '@material-ui/core'
 
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import { connect } from 'react-redux'
 import CartList from './CartList'
 import paypalImg from '../../assets/images/paypal.png'
 import Layout from '../Layout'
+import { addToCart } from '../../actions/cartActions'
+import { setSnackbar } from '../../reducers/snackbarReducer'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -33,8 +36,9 @@ const useStyles = makeStyles(() =>
   }),
 )
 
-const Cart = () => {
+const Cart = props => {
   const classes = useStyles()
+  const { total } = props
   return (
     <Layout>
       <Container>
@@ -81,7 +85,7 @@ const Cart = () => {
                 <Paper className={classes.subtotal} elevation={1}>
                   <Typography variant="h6" className={classes.yellow}>
                     <AttachMoneyIcon />
-                    500.00
+                    {total}
                   </Typography>
                 </Paper>
               </Grid>
@@ -111,7 +115,7 @@ const Cart = () => {
                 <Paper className={classes.subtotal} elevation={1}>
                   <Typography variant="h6" className={classes.yellow}>
                     <AttachMoneyIcon />
-                    500.00
+                    {total}
                   </Typography>
                 </Paper>
               </Grid>
@@ -144,4 +148,21 @@ const Cart = () => {
   )
 }
 
-export default Cart
+const mapStateToProps = state => ({
+  cartItems: state.cartReducer.addedItems,
+  total: state.cartReducer.total,
+})
+
+const mapDispatchToProps = dispatch => ({
+  addToCart: (id, files) => {
+    dispatch(addToCart(id, files))
+  },
+  setSnackbar: () => {
+    dispatch(setSnackbar(true, 'success', 'Added to cart'))
+  },
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Cart)

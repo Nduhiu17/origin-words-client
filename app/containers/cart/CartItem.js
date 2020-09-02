@@ -7,6 +7,7 @@ import { Paper, Grid, Button } from '@material-ui/core'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import wordImg from '../../assets/images/download.png'
+import { addQuantity } from '../../actions/cartActions'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -23,7 +24,7 @@ const useStyles = makeStyles(() =>
     },
   }),
 )
-export default function CartItem() {
+export default function CartItem({ item }) {
   const classes = useStyles()
   return (
     <Paper className={classes.item} elevation={0}>
@@ -40,22 +41,19 @@ export default function CartItem() {
                 />
               </Paper>
             </Grid>
-            <Grid>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              lobortis gravida tempus. Etiam et aliquam magna.
-            </Grid>
+            <Grid>{item.name}</Grid>
           </Grid>
         </Grid>
         <Grid item md={2}>
-          1
+          {item.quantity}
         </Grid>
         <Grid item md={2} style={{ color: '#ff8c00' }}>
           <AttachMoneyIcon />
-          100
+          {item.price}
         </Grid>
         <Grid item md={2} style={{ color: '#ff8c00' }}>
           <AttachMoneyIcon />
-          800
+          {item.price * item.quantity}
         </Grid>
       </Grid>
       <Grid container spacing={2} justify="flex-end">

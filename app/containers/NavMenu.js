@@ -11,10 +11,13 @@ import Badge from '@material-ui/core/Badge'
 import { Link } from 'react-router-dom'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import { connect } from 'react-redux'
 import LOGO from '../assets/images/logo.jpeg'
 import history from '../utils/history'
 import isAdmin from '../utils/isAdmin'
 import isLoggedIn from '../utils/isLoggedIn'
+import { addToCart } from '../actions/cartActions'
+import { setSnackbar } from '../reducers/snackbarReducer'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function NavMenu() {
+const NavMenu = props => {
   const classes = useStyles()
 
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -65,6 +68,12 @@ export default function NavMenu() {
     loggedInUser = user.user.name
   }
 
+  const { addedItems } = props
+
+  const totalItems = addedItems.length
+
+  console.log(`total>>>>>>>>${totalItems}`)
+
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ background: '#fff' }}>
@@ -84,7 +93,11 @@ export default function NavMenu() {
 
           <Link to="/cart" className={classes.links}>
             <Button className={classes.badge}>
-              <Badge badgeContent={4} color="secondary" className="">
+              <Badge
+                badgeContent={totalItems || '0'}
+                color="secondary"
+                className=""
+              >
                 <ShoppingCartIcon />
               </Badge>
               Cart
@@ -136,3 +149,21 @@ export default function NavMenu() {
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  addedItems: state.cartReducer.addedItems,
+})
+
+const mapDispatchToProps = dispatch => ({
+  addToCart: (id, files) => {
+    dispatch(addToCart(id, files))
+  },
+  setSnackbar: () => {
+    dispatch(setSnackbar(true, 'success', 'Added to cart'))
+  },
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NavMenu)
