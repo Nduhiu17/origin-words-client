@@ -6,7 +6,11 @@ import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { Paper, Grid, Button } from '@material-ui/core'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import wordImg from '../../assets/images/download.png'
+import { setSnackbar } from '../../reducers/snackbarReducer'
+import { removeItem } from '../../actions/cartActions'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -23,8 +27,14 @@ const useStyles = makeStyles(() =>
     },
   }),
 )
-export default function CartItem({ item }) {
+const CartItem = props => {
   const classes = useStyles()
+  const handleRemove = id => {
+    props.removeItem(id)
+    props.setSnackbar()
+  }
+
+  const { item } = props
   return (
     <Paper className={classes.item} elevation={0}>
       <Grid container justify="space-between">
@@ -66,7 +76,13 @@ export default function CartItem({ item }) {
         </Grid>
         <Grid style={{ marginTop: 0 }} item md={2} xs={12} sm={12}>
           <Tooltip TransitionComponent={Zoom} title="Remove item">
-            <Paper style={{ padding: 10 }} elevation={1}>
+            <Paper
+              style={{ padding: 10 }}
+              elevation={1}
+              onClick={() => {
+                handleRemove(item.id)
+              }}
+            >
               <RemoveShoppingCartIcon color="secondary" />
               <Button>Remove</Button>
             </Paper>
@@ -76,3 +92,23 @@ export default function CartItem({ item }) {
     </Paper>
   )
 }
+
+CartItem.propTypes = {
+  item: PropTypes.number,
+}
+
+const mapStateToProps = () => ({})
+
+const mapDispatchToProps = dispatch => ({
+  removeItem: id => {
+    dispatch(removeItem(id))
+  },
+  setSnackbar: () => {
+    dispatch(setSnackbar(true, 'info', 'Removed from cart'))
+  },
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CartItem)

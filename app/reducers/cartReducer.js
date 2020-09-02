@@ -14,7 +14,6 @@ const cartReducer = (state = initState, action) => {
   // adding file to cart
 
   if (action.type === ADD_TO_CART) {
-    console.log(`at the reducer we say>>>>>>>>>>>>>${action.files}`)
     const addedItem = action.files.find(item => item.id === action.id)
     // check if the action id exists in the addedItems
     const existedItem = state.addedItems.find(item => action.id === item.id)

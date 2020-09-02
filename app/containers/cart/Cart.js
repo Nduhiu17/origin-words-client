@@ -152,7 +152,7 @@ const Cart = props => {
 
 Cart.propTypes = {
   total: PropTypes.number,
-  addedItems: PropTypes.number,
+  cartItems: PropTypes.number,
 }
 
 const mapStateToProps = state => ({
