@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 import { Paper, Grid, Typography, Toolbar } from '@material-ui/core'
 import Link from '@material-ui/core/Link'
 
@@ -13,12 +13,15 @@ import Zoom from '@material-ui/core/Zoom'
 import PropTypes from 'prop-types'
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
+import { connect } from 'react-redux'
 import wordImg from '../../assets/images/download.png'
 import isAdmin from '../../utils/isAdmin'
 import { CustomDialog } from '../../shared/CustomModal'
 import FileForm from '../admin/files/FileForm'
+import { addToCart } from '../../actions/cartActions'
+import { setSnackbar } from '../../reducers/snackbarReducer'
 
-const File = ({ file }) => {
+const File = props => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleDialogClose = () => {
@@ -27,6 +30,12 @@ const File = ({ file }) => {
 
   const handleDialogOpen = () => {
     setIsOpen(true)
+  }
+
+  const handleAddToCartClick = id => {
+    console.log(`id>>>>>>>>>>${id}`)
+    props.addToCart(id, props.files)
+    props.setSnackbar(true, 'success', 'success')
   }
 
   return (
@@ -50,7 +59,7 @@ const File = ({ file }) => {
                 color: '#2F4F4F',
               }}
             >
-              {file.name}
+              {props.file.name}
             </Typography>
             <div className="">
               <Accordion
@@ -63,7 +72,7 @@ const File = ({ file }) => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>{file.description}</Typography>
+                  <Typography>{props.file.description}</Typography>
                 </AccordionDetails>
               </Accordion>
             </div>
@@ -121,7 +130,7 @@ const File = ({ file }) => {
                 disableElevation
               >
                 <AttachMoneyIcon fontSize="large" />
-                {file.price}
+                {props.file.price}
               </Button>
             </Typography>
             <Typography>
@@ -134,6 +143,9 @@ const File = ({ file }) => {
                     backgroundColor: '#fff',
                   }}
                   disableElevation
+                  onClick={() =>
+                    handleAddToCartClick(props.file.id, props.files)
+                  }
                 >
                   <AddShoppingCartIcon fontSize="large" />
                   Add to Cart
@@ -157,6 +169,23 @@ const File = ({ file }) => {
 
 File.propTypes = {
   file: PropTypes.object,
+  addToCart: PropTypes.func,
 }
 
-export default File
+const mapStateToProps = state => ({
+  files: state.files.files,
+})
+
+const mapDispatchToProps = dispatch => ({
+  addToCart: (id, files) => {
+    dispatch(addToCart(id, files))
+  },
+  setSnackbar: () => {
+    dispatch(setSnackbar(true, 'success', 'Added to cart'))
+  },
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(File)

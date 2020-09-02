@@ -23,6 +23,7 @@ import setRegisterRequestReducer from './setRegisterRequestReducer'
 import setCategoryCreateRequestReducer from './setCategoryCreateRequest'
 import selectasubcategoryReducer from './selectasubcategoryReducer'
 import setSubCategoryCreateRequestReducer from './setSubCategoryToCreateReducer'
+import cartReducer from './cartReducer'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -47,7 +48,7 @@ export default function createReducer(injectedReducers = {}) {
     categoryCreateRequest: setCategoryCreateRequestReducer,
     selectedCat: selectasubcategoryReducer,
     subCatData: setSubCategoryCreateRequestReducer,
-
+    cartReducer,
     ...injectedReducers,
   })
 
