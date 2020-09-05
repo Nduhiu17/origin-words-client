@@ -7,6 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import GridList from '@material-ui/core/GridList'
 import { CategoryItem } from '../categories/CategoryItem'
 import { CustomDialog } from '../../../shared/CustomModal'
 import CategoryForm from '../categories/CategoryForm'
@@ -32,7 +33,7 @@ const SubcategoryList = props => {
 
   const { headTitle, subcategories } = props
   return (
-    <Grid>
+    <GridList cellHeight={160} cols={1} style={{ height: 600 }}>
       <Grid container>
         <Grid
           container
@@ -84,7 +85,7 @@ const SubcategoryList = props => {
       >
         <SubCategoryForm />
       </CustomDialog>
-    </Grid>
+    </GridList>
   )
 }
 
