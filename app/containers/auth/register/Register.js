@@ -8,6 +8,7 @@ import {
   Button,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 import RegisterForm from './RegisterForm'
 import Layout from '../../Layout'
 
@@ -59,6 +60,22 @@ const Register = () => {
                 </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Toolbar />
+                  <Link to="/login">
+                    <Button
+                      variant="contained"
+                      className={classes.button}
+                      style={{
+                        backgroundColor: '#F95700FF',
+                        color: '#fff',
+                        width: '80%',
+                      }}
+                    >
+                      LOGIN WITH EMAIL
+                    </Button>
+                  </Link>
+                </Grid>
+                <Grid item md={12} sm={12} xs={12}>
+                  <Toolbar />
                   <Button
                     variant="contained"
                     className={classes.button}
@@ -72,21 +89,6 @@ const Register = () => {
                     LOGIN WITH FACEBOOK
                   </Button>
                 </Grid>
-                <Grid item md={12} sm={12} xs={12}>
-                  <Toolbar />
-                  <Button
-                    variant="contained"
-                    className={classes.button}
-                    style={{
-                      backgroundColor: '#F95700FF',
-                      color: '#fff',
-                      width: '80%',
-                    }}
-                  >
-                    LOGIN WITH EMAIL
-                  </Button>
-                </Grid>
-
                 <Grid item md={12} sm={12} xs={12}>
                   <Toolbar />
                   <Button

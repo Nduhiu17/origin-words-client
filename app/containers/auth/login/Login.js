@@ -8,6 +8,7 @@ import {
   Button,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import Layout from '../../Layout'
 
@@ -59,17 +60,19 @@ const Login = () => {
                 </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Toolbar />
-                  <Button
-                    variant="contained"
-                    className={classes.button}
-                    style={{
-                      backgroundColor: '#F95700FF',
-                      color: '#fff',
-                      width: '80%',
-                    }}
-                  >
-                    CREATE WITH EMAIL
-                  </Button>
+                  <Link to="/register">
+                    <Button
+                      variant="contained"
+                      className={classes.button}
+                      style={{
+                        backgroundColor: '#F95700FF',
+                        color: '#fff',
+                        width: '80%',
+                      }}
+                    >
+                      CREATE WITH EMAIL
+                    </Button>
+                  </Link>
                 </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Toolbar />

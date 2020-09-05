@@ -57,6 +57,7 @@ class RegisterForm extends Component {
               value={name}
               type="text"
               onChange={this.handleChange}
+              fullWidth
             />
           </Grid>
           <Grid item md={12} sm={12} xs={12}>
@@ -66,6 +67,7 @@ class RegisterForm extends Component {
               value={email}
               type="text"
               onChange={this.handleChange}
+              fullWidth
             />
           </Grid>
           <Grid item md={12} sm={12} xs={12}>
@@ -75,6 +77,7 @@ class RegisterForm extends Component {
               name="username"
               value={username}
               onChange={this.handleChange}
+              fullWidth
             />
           </Grid>
           <Grid item md={12} sm={12} xs={12}>
@@ -84,6 +87,7 @@ class RegisterForm extends Component {
               name="password"
               value={password}
               onChange={this.handleChange}
+              fullWidth
             />
           </Grid>
           <Grid item md={12} sm={12} xs={12}>

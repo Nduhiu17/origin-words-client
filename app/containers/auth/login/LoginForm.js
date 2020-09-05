@@ -50,10 +50,11 @@ class LoginForm extends Component {
           <Grid item md={12} sm={12} xs={12}>
             <TextField
               id="standard-basic12s"
-              label="email/username"
+              label="test email: nduhiu254@gmail.com"
               name="usernameOrEmail"
               value={usernameOrEmail}
               onChange={this.handleChange}
+              placeholder=","
               required
               fullWidth
             />
@@ -61,7 +62,7 @@ class LoginForm extends Component {
           <Grid item md={12} sm={12} xs={12}>
             <TextField
               id="standard-basic12sde"
-              label="password"
+              label="test password: password"
               type="password"
               name="password"
               onChange={this.handleChange}
@@ -77,7 +78,7 @@ class LoginForm extends Component {
               style={{
                 backgroundColor: '#F95700FF',
                 color: '#fff',
-                width: '60%',
+                width: '80%',
               }}
               type="submit"
               disabled={usernameOrEmail.length <= 0 || password.length <= 0}
@@ -87,6 +88,49 @@ class LoginForm extends Component {
               ) : (
                 'Login'
               )}
+            </Button>
+          </Grid>
+          <Grid item md={12} sm={12} xs={12}>
+            <Toolbar />
+            <Button
+              variant="contained"
+              fullWidth
+              style={{
+                backgroundColor: '#40588A',
+                color: '#fff',
+                width: '80%',
+              }}
+              disabled
+            >
+              LOGIN WITH FACEBOOK
+            </Button>
+          </Grid>
+          <Grid item md={12} sm={12} xs={12}>
+            <Toolbar />
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: '#1da1f2',
+                color: '#fff',
+                width: '80%',
+              }}
+              disabled
+            >
+              LOGIN WITH TWITTER
+            </Button>
+          </Grid>
+          <Grid item md={12} sm={12} xs={12}>
+            <Toolbar />
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: '#4285f4',
+                color: '#fff',
+                width: '80%',
+              }}
+              disabled
+            >
+              LOGIN WITH GMAIL
             </Button>
           </Grid>
           <Toolbar />
